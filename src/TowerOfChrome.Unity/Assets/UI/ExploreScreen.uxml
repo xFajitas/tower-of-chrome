@@ -12,7 +12,10 @@
             <ui:VisualElement class="modal-box">
                 <ui:Label text="STAIRS" class="modal-title" />
                 <ui:Label text="Descend to the next floor?" class="modal-line" />
-                <ui:Label text="Enter: Confirm    ESC: Cancel" class="modal-line" />
+                <ui:VisualElement class="modal-button-row">
+                    <ui:Label name="stairs-confirm-button" text="[Enter] Confirm" class="modal-button" />
+                    <ui:Label name="stairs-cancel-button" text="[ESC] Cancel" class="modal-button" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
 
@@ -20,7 +23,7 @@
             <ui:VisualElement class="modal-box">
                 <ui:Label text="LOOT" class="modal-title" />
                 <ui:VisualElement name="loot-lines" />
-                <ui:Label text="Enter / ESC: Continue" class="modal-line" />
+                <ui:Label name="loot-continue-button" text="[Enter / ESC] Continue" class="modal-button" />
             </ui:VisualElement>
         </ui:VisualElement>
 

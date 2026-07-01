@@ -24,6 +24,7 @@ namespace TowerOfChrome.Unity.Screens
         {
             var root = _uiDocument.rootVisualElement;
             _summary = root.Q<Label>("summary");
+            root.RegisterCallback<ClickEvent>(_ => ReturnToMenu());
             Render();
         }
 

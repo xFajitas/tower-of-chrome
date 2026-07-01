@@ -10,6 +10,11 @@ namespace TowerOfChrome.Unity.Views
     /// </summary>
     public static class PartyHudBuilder
     {
+        /// <summary>Consistent element name for a combatant's row, so callers (e.g. CombatFx hit
+        /// animations) can look it up after a fresh Render() without threading references
+        /// through the render call itself.</summary>
+        public static string RowName(string combatantId) => $"combatant-row-{combatantId}";
+
         public static void Render(VisualElement container, Party party)
         {
             container.Clear();
@@ -18,6 +23,7 @@ namespace TowerOfChrome.Unity.Views
             foreach (var member in party.AllMembers)
             {
                 var row = new VisualElement();
+                row.name = RowName(member.CombatantId());
                 row.AddToClassList("hud-row");
 
                 var header = new VisualElement();

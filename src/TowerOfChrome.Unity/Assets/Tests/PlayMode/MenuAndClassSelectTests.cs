@@ -231,4 +231,100 @@ public class MenuAndClassSelectTests
 
         Assert.AreEqual(GameState.Menu, gm.Fsm.State);
     }
+
+    // ------------------------------------------------------------------
+    // ClassSelectScreen -- rename
+    // ------------------------------------------------------------------
+
+    [UnityTest]
+    public IEnumerator ClassSelect_BeginRename_EntersRenamingState_ForThatSlot()
+    {
+        GameManager gm = null;
+        yield return LoadGameManager(loaded => gm = loaded);
+        gm.SwitchTo(GameState.ClassSelect);
+        yield return null;
+
+        var view = GetClassSelectView(gm);
+
+        view.BeginRename(2);
+
+        Assert.IsTrue(view.IsRenaming);
+        Assert.AreEqual(2, view.SlotSelected);
+    }
+
+    [UnityTest]
+    public IEnumerator ClassSelect_ConfirmRename_UpdatesName_AndConfirmUsesIt()
+    {
+        GameManager gm = null;
+        yield return LoadGameManager(loaded => gm = loaded);
+        gm.SwitchTo(GameState.ClassSelect);
+        yield return null;
+
+        var view = GetClassSelectView(gm);
+        view.BeginRename(1);
+
+        view.ConfirmRename("Zephyra");
+
+        Assert.IsFalse(view.IsRenaming);
+        Assert.AreEqual("Zephyra", view.Names[1]);
+
+        view.Confirm();
+
+        Assert.AreEqual("Zephyra", gm.Party.AllMembers[1].Name);
+    }
+
+    [UnityTest]
+    public IEnumerator ClassSelect_CancelRename_KeepsOriginalName()
+    {
+        GameManager gm = null;
+        yield return LoadGameManager(loaded => gm = loaded);
+        gm.SwitchTo(GameState.ClassSelect);
+        yield return null;
+
+        var view = GetClassSelectView(gm);
+        var original = view.Names[0];
+        view.BeginRename(0);
+
+        view.CancelRename();
+
+        Assert.IsFalse(view.IsRenaming);
+        Assert.AreEqual(original, view.Names[0]);
+    }
+
+    [UnityTest]
+    public IEnumerator ClassSelect_ConfirmRename_WithBlankName_KeepsOriginalName()
+    {
+        GameManager gm = null;
+        yield return LoadGameManager(loaded => gm = loaded);
+        gm.SwitchTo(GameState.ClassSelect);
+        yield return null;
+
+        var view = GetClassSelectView(gm);
+        var original = view.Names[3];
+        view.BeginRename(3);
+
+        view.ConfirmRename("   ");
+
+        Assert.AreEqual(original, view.Names[3]);
+    }
+
+    [UnityTest]
+    public IEnumerator ClassSelect_WhileRenaming_SlotNavigationAndCyclingAreSuspended()
+    {
+        GameManager gm = null;
+        yield return LoadGameManager(loaded => gm = loaded);
+        gm.SwitchTo(GameState.ClassSelect);
+        yield return null;
+
+        var view = GetClassSelectView(gm);
+        view.BeginRename(0);
+        var classBefore = view.ClassIdForSlot(0);
+
+        view.NavigateSlotDown();
+        view.CycleClassRight();
+
+        Assert.AreEqual(0, view.SlotSelected);
+        Assert.AreEqual(classBefore, view.ClassIdForSlot(0));
+        Assert.IsTrue(view.IsRenaming);
+    }
 }

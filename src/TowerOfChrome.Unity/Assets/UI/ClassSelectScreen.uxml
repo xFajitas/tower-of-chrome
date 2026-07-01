@@ -4,6 +4,10 @@
         <ui:Label name="header" text="CHOOSE  YOUR  PARTY" class="class-select-header" />
         <ui:VisualElement name="slot-list" class="slot-list" />
         <ui:VisualElement name="detail-panel" class="detail-panel" />
-        <ui:Label name="hint" text="Up/Down: member    Left/Right: class    Enter: start game    ESC: back" class="hint-text" />
+        <ui:VisualElement name="confirm-row" class="confirm-row">
+            <ui:Label name="confirm-button" text="Start Game" class="confirm-button" />
+            <ui:Label name="cancel-button" text="Back" class="cancel-button" />
+        </ui:VisualElement>
+        <ui:Label name="hint" text="Up/Down: member    Left/Right: class    N/click name: rename    Enter: start game    ESC: back" class="hint-text" />
     </ui:VisualElement>
 </ui:UXML>

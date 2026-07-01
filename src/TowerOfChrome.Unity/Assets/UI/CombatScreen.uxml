@@ -18,7 +18,7 @@
                 <ui:Label text="VICTORY!" class="modal-title" />
                 <ui:VisualElement name="xp-lines" />
                 <ui:VisualElement name="loot-lines" />
-                <ui:Label text="Enter / ESC: Continue" class="modal-line" />
+                <ui:Label name="victory-continue-button" text="[Enter / ESC] Continue" class="modal-button" />
             </ui:VisualElement>
         </ui:VisualElement>
 
@@ -26,7 +26,7 @@
             <ui:VisualElement class="modal-box">
                 <ui:Label text="DEFEAT" class="modal-title" />
                 <ui:Label text="The party has fallen." class="modal-line" />
-                <ui:Label text="Enter / ESC: Continue" class="modal-line" />
+                <ui:Label name="defeat-continue-button" text="[Enter / ESC] Continue" class="modal-button" />
             </ui:VisualElement>
         </ui:VisualElement>
 

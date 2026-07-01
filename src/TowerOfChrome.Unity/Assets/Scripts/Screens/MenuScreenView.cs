@@ -92,10 +92,25 @@ namespace TowerOfChrome.Unity.Screens
             _itemsContainer.Clear();
             for (var i = 0; i < _items.Count; i++)
             {
+                var index = i; // per-iteration copy -- a `for` loop variable is shared across
+                                // iterations in C#, so capturing `i` directly would make every
+                                // click handler see its final value instead of its own row.
                 var label = new Label(_items[i].Label);
                 label.AddToClassList("menu-item");
                 if (i == _selected)
                     label.AddToClassList("menu-item--selected");
+
+                label.RegisterCallback<MouseEnterEvent>(_ =>
+                {
+                    _selected = index;
+                    Render();
+                });
+                label.RegisterCallback<ClickEvent>(_ =>
+                {
+                    _selected = index;
+                    Activate();
+                });
+
                 _itemsContainer.Add(label);
             }
         }

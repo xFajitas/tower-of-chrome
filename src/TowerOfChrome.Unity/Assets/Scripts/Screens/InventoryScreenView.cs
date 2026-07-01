@@ -216,6 +216,24 @@ namespace TowerOfChrome.Unity.Screens
             Render();
         }
 
+        /// <summary>Mouse equivalent of navigating to a row: clicking an already-selected row
+        /// activates it (same as pressing Enter/E), matching the "click to select, click again
+        /// to act" pattern used elsewhere; clicking a different row just selects it.</summary>
+        public void ClickItemRow(int index)
+        {
+            if (State != InventoryUiState.ItemSelect)
+                return;
+            if (index == ItemCursor)
+            {
+                ActivateItem();
+            }
+            else
+            {
+                ItemCursor = index;
+                Render();
+            }
+        }
+
         /// <summary>E/Enter: equip an equippable bag item, use a consumable, or show info about
         /// an equipped slot. Mirrors Python's _activate.</summary>
         public void ActivateItem()
@@ -478,10 +496,18 @@ namespace TowerOfChrome.Unity.Screens
             for (var i = 0; i < members.Count; i++)
             {
                 var member = members[i];
+                var slot = i; // per-iteration copy for the click closure
                 var row = new VisualElement();
                 row.AddToClassList("member-row");
                 if (i == MemberSelected)
                     row.AddToClassList("member-row--selected");
+                row.RegisterCallback<ClickEvent>(_ =>
+                {
+                    if (State != InventoryUiState.MemberSelect)
+                        return;
+                    MemberSelected = slot;
+                    ConfirmMember();
+                });
 
                 var header = new VisualElement();
                 header.AddToClassList("member-row-header");
@@ -547,12 +573,14 @@ namespace TowerOfChrome.Unity.Screens
             var eqCount = rows.Count(r => r.IsEquipped);
             for (var i = 0; i < eqCount; i++)
             {
+                var index = i; // per-iteration copy for the click closures
                 var row = rows[i];
                 var rowEl = new VisualElement();
                 rowEl.AddToClassList("equipped-row");
                 var selected = selecting && i == cursor;
                 if (selected)
                     rowEl.AddToClassList("equipped-row--selected");
+                rowEl.RegisterCallback<ClickEvent>(_ => ClickItemRow(index));
 
                 var slotLabel = new Label(SlotLabels.GetValueOrDefault(row.Slot, row.Slot));
                 slotLabel.AddToClassList("slot-label");
@@ -574,6 +602,18 @@ namespace TowerOfChrome.Unity.Screens
                         var bonusLabel = new Label(bonusText);
                         bonusLabel.AddToClassList("item-stat-bonus");
                         rowEl.Add(bonusLabel);
+                    }
+
+                    if (selected)
+                    {
+                        var unequipButton = new Label("[Unequip]");
+                        unequipButton.AddToClassList("row-action-button");
+                        unequipButton.RegisterCallback<ClickEvent>(evt =>
+                        {
+                            UnequipSelected();
+                            evt.StopPropagation();
+                        });
+                        rowEl.Add(unequipButton);
                     }
                 }
                 else
@@ -608,6 +648,7 @@ namespace TowerOfChrome.Unity.Screens
                     rowEl.AddToClassList("bag-row");
                     if (selected)
                         rowEl.AddToClassList("bag-row--selected");
+                    rowEl.RegisterCallback<ClickEvent>(_ => ClickItemRow(globalIndex));
 
                     var nameLabel = new Label(item.Name);
                     nameLabel.AddToClassList("bag-item-name");
@@ -636,6 +677,27 @@ namespace TowerOfChrome.Unity.Screens
                         rowEl.Add(effectLabel);
                     }
 
+                    if (selected)
+                    {
+                        var dropButton = new Label("[Drop]");
+                        dropButton.AddToClassList("row-action-button");
+                        dropButton.RegisterCallback<ClickEvent>(evt =>
+                        {
+                            DropSelected();
+                            evt.StopPropagation();
+                        });
+                        rowEl.Add(dropButton);
+
+                        var tradeButton = new Label("[Trade]");
+                        tradeButton.AddToClassList("row-action-button");
+                        tradeButton.RegisterCallback<ClickEvent>(evt =>
+                        {
+                            BeginTrade();
+                            evt.StopPropagation();
+                        });
+                        rowEl.Add(tradeButton);
+                    }
+
                     _bagRows.Add(rowEl);
                 }
             }
@@ -655,6 +717,11 @@ namespace TowerOfChrome.Unity.Screens
                 label.AddToClassList("trade-row");
                 if (i == TradeTargetSlot)
                     label.AddToClassList("trade-row--selected");
+                label.RegisterCallback<ClickEvent>(_ =>
+                {
+                    TradeTargetSlot = i;
+                    ConfirmTrade();
+                });
                 _tradeRows.Add(label);
             }
         }

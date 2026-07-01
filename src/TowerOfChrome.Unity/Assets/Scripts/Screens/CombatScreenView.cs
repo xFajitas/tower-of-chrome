@@ -49,8 +49,15 @@ namespace TowerOfChrome.Unity.Screens
         private VisualElement _xpLines;
         private VisualElement _lootLines;
         private VisualElement _defeatModal;
+        private Label _victoryContinueButton;
+        private Label _defeatContinueButton;
 
         private float _resolveTimer;
+
+        // Populated right before each Render() call that follows an action resolving, so the
+        // hit-reaction shake can find the freshly-built rows for whoever acted/was hit.
+        private Combatant _lastActor;
+        private List<Combatant> _lastHitTargets = new();
 
         public CombatUiState State { get; private set; } = CombatUiState.PlayerMain;
         public int MainSelected { get; private set; }
@@ -79,6 +86,10 @@ namespace TowerOfChrome.Unity.Screens
             _xpLines = root.Q<VisualElement>("xp-lines");
             _lootLines = root.Q<VisualElement>("loot-lines");
             _defeatModal = root.Q<VisualElement>("defeat-modal");
+            _victoryContinueButton = root.Q<Label>("victory-continue-button");
+            _defeatContinueButton = root.Q<Label>("defeat-continue-button");
+            _victoryContinueButton.RegisterCallback<ClickEvent>(_ => ContinueFromTerminal());
+            _defeatContinueButton.RegisterCallback<ClickEvent>(_ => ContinueFromTerminal());
 
             // Mirrors Python's CombatScreen.on_enter: always starts a fresh encounter. The
             // caller (ExploreScreenView) only queues PendingEncounter/CombatRoomId and switches
@@ -294,10 +305,13 @@ namespace TowerOfChrome.Unity.Screens
 
         private void SubmitAndWait(CombatAction action)
         {
-            Battle.SubmitPlayerAction(action);
+            var result = Battle.SubmitPlayerAction(action);
             _resolveTimer = 0f;
             State = CombatUiState.Resolving;
+            _lastActor = action.Actor;
+            _lastHitTargets = result.Hits.Select(h => h.Target).ToList();
             Render();
+            PlayHitFx();
         }
 
         /// <summary>Mirrors Python's _after_player_action, run once the resolve delay elapses.</summary>
@@ -330,10 +344,27 @@ namespace TowerOfChrome.Unity.Screens
             }
             else
             {
-                Battle.AdvanceEnemyTurn();
+                var result = Battle.AdvanceEnemyTurn();
                 _resolveTimer = 0f;
+                _lastActor = result.Action.Actor;
+                _lastHitTargets = result.Hits.Select(h => h.Target).ToList();
+                Render();
+                PlayHitFx();
+                return;
             }
             Render();
+        }
+
+        /// <summary>Shakes the rows of whoever was hit by the action just resolved (looked up by
+        /// name after Render() has rebuilt the rows fresh -- see PartyHudBuilder.RowName).</summary>
+        private void PlayHitFx()
+        {
+            foreach (var target in _lastHitTargets)
+            {
+                var rowName = PartyHudBuilder.RowName(target.CombatantId());
+                var row = _enemiesList.Q(rowName) ?? _hudContainer.Q(rowName);
+                CombatFx.Shake(row);
+            }
         }
 
         /// <summary>Test-only bypass for the real-time resolve delay: immediately runs whichever
@@ -387,12 +418,29 @@ namespace TowerOfChrome.Unity.Screens
             foreach (var enemy in battle.GetEnemyList())
             {
                 var row = new VisualElement();
+                row.name = PartyHudBuilder.RowName(enemy.CombatantId());
                 row.AddToClassList("enemy-row");
 
                 var selected = State == CombatUiState.PlayerTarget && targets.Contains(enemy) &&
                                targets[TargetSelected % Mathf.Max(1, targets.Count)] == enemy;
                 if (selected)
                     row.AddToClassList("enemy-row--selected");
+
+                // Clicking an enemy while picking a target attacks/targets it directly, instead
+                // of needing the text target-list below the action menu.
+                if (!enemy.IsKo)
+                {
+                    row.RegisterCallback<ClickEvent>(_ =>
+                    {
+                        if (State != CombatUiState.PlayerTarget)
+                            return;
+                        var idx = CurrentTargetList().IndexOf(enemy);
+                        if (idx < 0)
+                            return;
+                        TargetSelected = idx;
+                        ConfirmTarget();
+                    });
+                }
 
                 var avatarTex = ArchetypeIcons.EnemyBase();
                 if (avatarTex != null)
@@ -487,11 +535,13 @@ namespace TowerOfChrome.Unity.Screens
             row.AddToClassList("action-row");
             for (var i = 0; i < MainActions.Length; i++)
             {
+                var index = i; // per-iteration copy for the click closure
                 var cell = new Label($"[{i + 1}] {MainActions[i]}");
                 cell.AddToClassList("action-item");
                 cell.AddToClassList("action-cell");
                 if (i == MainSelected)
                     cell.AddToClassList("action-item--selected");
+                cell.RegisterCallback<ClickEvent>(_ => ActivateMain(index));
                 row.Add(cell);
             }
             _actionArea.Add(row);
@@ -509,6 +559,7 @@ namespace TowerOfChrome.Unity.Screens
 
             for (var i = 0; i < abilities.Count; i++)
             {
+                var index = i; // per-iteration copy for the click closure
                 var ab = reg.Get(abilities[i]);
                 var ready = battle.CanUseAbility(actor, ab.Id);
                 var cd = battle.Cooldowns.GetCooldown(actor, ab.Id);
@@ -520,6 +571,11 @@ namespace TowerOfChrome.Unity.Screens
                     label.AddToClassList("action-item--selected");
                 else if (!ready)
                     label.AddToClassList("action-item--disabled");
+                label.RegisterCallback<ClickEvent>(_ =>
+                {
+                    AbilitySelected = index;
+                    SelectAbility();
+                });
                 _actionArea.Add(label);
             }
 
@@ -538,11 +594,17 @@ namespace TowerOfChrome.Unity.Screens
             var targets = CurrentTargetList();
             for (var i = 0; i < targets.Count; i++)
             {
+                var index = i; // per-iteration copy for the click closure
                 var t = targets[i];
                 var label = new Label($"[{i + 1}] {t.Name}  HP {t.CurrentHp}/{t.MaxHp}");
                 label.AddToClassList("action-item");
                 if (i == TargetSelected % Mathf.Max(1, targets.Count))
                     label.AddToClassList("action-item--selected");
+                label.RegisterCallback<ClickEvent>(_ =>
+                {
+                    TargetSelected = index;
+                    ConfirmTarget();
+                });
                 _actionArea.Add(label);
             }
             _actionHint.text = "Up/Down: select    Enter: confirm    ESC: back";

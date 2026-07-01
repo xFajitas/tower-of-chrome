@@ -63,6 +63,9 @@ namespace TowerOfChrome.Unity.Screens
         private VisualElement _stairsModal;
         private VisualElement _lootModal;
         private VisualElement _lootLinesContainer;
+        private Label _stairsConfirmButton;
+        private Label _stairsCancelButton;
+        private Label _lootContinueButton;
 
         public ExploreUiState State { get; private set; } = ExploreUiState.Navigating;
 
@@ -88,6 +91,12 @@ namespace TowerOfChrome.Unity.Screens
             _stairsModal = root.Q<VisualElement>("stairs-modal");
             _lootModal = root.Q<VisualElement>("loot-modal");
             _lootLinesContainer = root.Q<VisualElement>("loot-lines");
+            _stairsConfirmButton = root.Q<Label>("stairs-confirm-button");
+            _stairsCancelButton = root.Q<Label>("stairs-cancel-button");
+            _lootContinueButton = root.Q<Label>("loot-continue-button");
+            _stairsConfirmButton.RegisterCallback<ClickEvent>(_ => ConfirmStairs());
+            _stairsCancelButton.RegisterCallback<ClickEvent>(_ => CancelStairs());
+            _lootContinueButton.RegisterCallback<ClickEvent>(_ => DismissLoot());
 
             _mapArea.style.width = DungeonGenerator.MapW;
             _mapArea.style.height = DungeonGenerator.MapH;
@@ -118,6 +127,32 @@ namespace TowerOfChrome.Unity.Screens
         // ------------------------------------------------------------------
         // Navigation / interaction (mirrors ExploreScreen.handle_event's NAVIGATING branch)
         // ------------------------------------------------------------------
+
+        /// <summary>Mouse equivalent of the arrow-key movement/interact model: clicking the
+        /// current room interacts with it, clicking a directly-connected room steps into it
+        /// (one room per click, same as one room per key press -- no multi-room path-clicking).</summary>
+        public void ClickRoom(int roomId)
+        {
+            if (State != ExploreUiState.Navigating)
+                return;
+
+            var df = gameManager.DungeonFloor;
+            if (df == null || !df.Rooms.TryGetValue(roomId, out var room))
+                return;
+
+            if (roomId == df.PlayerRoomId)
+            {
+                Interact();
+                return;
+            }
+
+            if (df.CurrentRoom.Connections.Contains(roomId))
+            {
+                df.MoveTo(roomId);
+                OnEnterRoom(room);
+                Render();
+            }
+        }
 
         public void MoveDirection(string direction)
         {
@@ -370,6 +405,8 @@ namespace TowerOfChrome.Unity.Screens
                 var label = new Label(RoomLabels[room.RoomType]);
                 label.AddToClassList("room-node-label");
                 node.Add(label);
+
+                node.RegisterCallback<ClickEvent>(_ => ClickRoom(room.Id));
 
                 _mapArea.Add(node);
             }
