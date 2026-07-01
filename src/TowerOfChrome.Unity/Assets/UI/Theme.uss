@@ -288,6 +288,158 @@
     font-size: 14px;
 }
 
+/* ---- Combat screen ---- */
+
+.combat-header {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    width: 100%;
+    font-size: 16px;
+    color: rgb(200, 80, 80);
+    -unity-text-align: middle-center;
+}
+
+.combat-turnqueue {
+    position: absolute;
+    top: 28px;
+    left: 8px;
+    font-size: 13px;
+    color: rgb(140, 90, 90);
+}
+
+.combat-body {
+    flex-direction: row;
+    flex-grow: 1;
+    padding-top: 52px;
+}
+
+.combat-main-panel {
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.combat-enemies {
+    flex-grow: 1;
+    padding: 8px;
+}
+
+.enemy-row {
+    flex-direction: row;
+    align-items: center;
+    padding: 6px 8px;
+    margin-bottom: 6px;
+    border-width: 1px;
+    border-color: rgb(40, 40, 40);
+}
+
+.enemy-row--selected {
+    border-color: rgb(255, 220, 70);
+    background-color: rgba(80, 60, 0, 0.25);
+}
+
+.enemy-name {
+    width: 200px;
+    font-size: 15px;
+    color: rgb(220, 180, 60);
+    -unity-font-style: bold;
+}
+
+.enemy-name--ko {
+    color: rgb(110, 110, 110);
+}
+
+.enemy-hp-bar-bg {
+    width: 160px;
+    height: 10px;
+    background-color: rgb(40, 40, 40);
+}
+
+.enemy-hp-bar-fill {
+    height: 10px;
+    background-color: rgb(180, 60, 60);
+}
+
+.enemy-hp-text {
+    margin-left: 8px;
+    font-size: 12px;
+    color: rgb(155, 135, 135);
+}
+
+.enemy-status-text {
+    margin-left: 8px;
+    font-size: 12px;
+    color: rgb(178, 128, 58);
+}
+
+.combat-log {
+    height: 110px;
+    background-color: rgba(0, 0, 0, 0.43);
+    padding: 6px;
+}
+
+.log-line {
+    font-size: 13px;
+    color: rgb(200, 170, 170);
+}
+
+.combat-action-area {
+    height: 96px;
+    background-color: rgb(8, 3, 3);
+    padding: 8px;
+    border-top-width: 1px;
+    border-top-color: rgb(50, 20, 20);
+}
+
+.action-item {
+    font-size: 15px;
+    color: rgb(140, 140, 140);
+}
+
+.action-item--selected {
+    color: rgb(255, 220, 70);
+}
+
+.action-item--disabled {
+    color: rgb(80, 80, 80);
+}
+
+.action-row {
+    flex-direction: row;
+}
+
+.action-cell {
+    width: 140px;
+}
+
+.ability-desc {
+    font-size: 13px;
+    color: rgb(150, 165, 200);
+    margin-top: 4px;
+}
+
+.action-hint {
+    position: absolute;
+    bottom: 6px;
+    left: 8px;
+    font-size: 12px;
+    color: rgb(70, 70, 90);
+}
+
+.xp-line {
+    font-size: 16px;
+    color: rgb(190, 190, 190);
+}
+
+.xp-line--levelup {
+    color: rgb(230, 190, 60);
+    -unity-font-style: bold;
+}
+
+.loot-line {
+    font-size: 15px;
+}
+
 /* ---- Modal overlays ---- */
 
 .modal-overlay {

@@ -68,6 +68,9 @@ public static class SceneBuilder
                 case GameState.Explore:
                     AddScreenUi<ExploreScreenView>(root, "Assets/UI/ExploreScreen.uxml", panelSettings, gm);
                     break;
+                case GameState.Combat:
+                    AddScreenUi<CombatScreenView>(root, "Assets/UI/CombatScreen.uxml", panelSettings, gm);
+                    break;
             }
         }
 

@@ -295,7 +295,8 @@ public class ExploreScreenTests
             System.Collections.Immutable.ImmutableArray.Create("basic_attack"), "aggressive", 50, "common_floor1");
         gm.PendingEncounter.Add(new Enemy(oneHitDef, gm.CurrentFloor));
 
-        gm.StartCombat();
+        // CombatScreenView.OnEnable() calls StartCombat() itself once the state switches --
+        // consuming the queued one-hit enemy, same as the real Explore -> Combat flow.
         gm.SwitchTo(GameState.Combat);
         yield return null;
 
