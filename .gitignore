@@ -21,6 +21,9 @@ sysinfo.txt
 *.unitypackage
 *.app
 
+# Installer build output (installer/TowerOfChrome.iss compiles here)
+installer/Output/
+
 # IDE
 .vs/
 .vscode/
