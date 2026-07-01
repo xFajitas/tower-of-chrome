@@ -1,9 +1,0 @@
-{
-    "window": {
-        "width": 1280,
-        "height": 720,
-        "title": "Dungeon of Chrome"
-    },
-    "fps": 60,
-    "debug": true
-}

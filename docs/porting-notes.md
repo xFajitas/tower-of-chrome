@@ -1,9 +1,10 @@
 # Python -> C# Porting Notes
 
-Living doc of behavioral decisions made while porting Dungeon of Chrome's game
-logic from Python/pygame to C# (`DungeonOfChrome.Core`). Read this before
-"fixing" anything that looks odd — most oddities are intentional parity with
-the original, not bugs introduced during the port.
+Living doc of behavioral decisions made while porting the game logic of
+*Dungeon of Chrome* (the original Python/pygame game) to C# as *Tower of
+Chrome* (`TowerOfChrome.Core`). Read this before "fixing" anything that looks
+odd — most oddities are intentional parity with the original, not bugs
+introduced during the port.
 
 ## Randomness — no cross-language reproducibility
 
