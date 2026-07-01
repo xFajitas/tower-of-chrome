@@ -1,0 +1,29 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <Style src="Theme.uss" />
+    <ui:VisualElement name="root" class="screen-root">
+        <ui:Label name="header" class="explore-header" />
+        <ui:VisualElement name="body" class="explore-body">
+            <ui:VisualElement name="map-area" class="map-area" />
+            <ui:VisualElement name="hud-container" />
+        </ui:VisualElement>
+        <ui:Label name="info-strip" class="info-strip" />
+
+        <ui:VisualElement name="stairs-modal" class="modal-overlay">
+            <ui:VisualElement class="modal-box">
+                <ui:Label text="STAIRS" class="modal-title" />
+                <ui:Label text="Descend to the next floor?" class="modal-line" />
+                <ui:Label text="Enter: Confirm    ESC: Cancel" class="modal-line" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="loot-modal" class="modal-overlay">
+            <ui:VisualElement class="modal-box">
+                <ui:Label text="LOOT" class="modal-title" />
+                <ui:VisualElement name="loot-lines" />
+                <ui:Label text="Enter / ESC: Continue" class="modal-line" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:Label name="hint" text="Arrows/WASD: move    Enter: interact    I: inventory    ESC: menu" class="hint-text" />
+    </ui:VisualElement>
+</ui:UXML>

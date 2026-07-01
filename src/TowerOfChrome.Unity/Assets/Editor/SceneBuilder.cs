@@ -48,6 +48,10 @@ public static class SceneBuilder
         {
             var root = new GameObject($"Screen_{states[i]}");
             root.transform.SetParent(gmGo.transform);
+            // Stay inactive in the saved scene so Awake/OnEnable only fire once GameManager.Awake()
+            // calls ActivateScreenRoot (after registries are built) -- not at scene-load time, which
+            // races GameManager's own Awake against every screen view's OnEnable.
+            root.SetActive(false);
 
             var element = screenRootsProp.GetArrayElementAtIndex(i);
             element.FindPropertyRelative("State").enumValueIndex = (int)states[i];
@@ -60,6 +64,9 @@ public static class SceneBuilder
                     break;
                 case GameState.ClassSelect:
                     AddScreenUi<ClassSelectScreenView>(root, "Assets/UI/ClassSelectScreen.uxml", panelSettings, gm);
+                    break;
+                case GameState.Explore:
+                    AddScreenUi<ExploreScreenView>(root, "Assets/UI/ExploreScreen.uxml", panelSettings, gm);
                     break;
             }
         }
