@@ -33,15 +33,6 @@ namespace TowerOfChrome.Unity.Screens
     {
         private static readonly string[] MainActions = { "Attack", "Abilities", "Defend", "Flee" };
 
-        private static readonly IReadOnlyDictionary<Rarity, Color> RarityColors = new Dictionary<Rarity, Color>
-        {
-            [Rarity.Common] = new Color(170 / 255f, 170 / 255f, 170 / 255f),
-            [Rarity.Uncommon] = new Color(60 / 255f, 200 / 255f, 60 / 255f),
-            [Rarity.Rare] = new Color(60 / 255f, 130 / 255f, 230 / 255f),
-            [Rarity.Epic] = new Color(170 / 255f, 60 / 255f, 230 / 255f),
-            [Rarity.Legendary] = new Color(230 / 255f, 170 / 255f, 30 / 255f),
-        };
-
         private const float ResolveDelay = 0.55f;
 
         [SerializeField] private GameManager gameManager;
@@ -566,7 +557,7 @@ namespace TowerOfChrome.Unity.Screens
                 var text = count == 1 ? item.Name : $"{item.Name}  x{count}";
                 var label = new Label(text);
                 label.AddToClassList("loot-line");
-                label.style.color = RarityColors.GetValueOrDefault(item.Rarity, Color.white);
+                label.style.color = RarityColors.Get(item.Rarity);
                 _lootLines.Add(label);
             }
         }

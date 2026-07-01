@@ -1,0 +1,30 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <Style src="Theme.uss" />
+    <ui:VisualElement name="root" class="screen-root">
+        <ui:Label name="header" text="[ INVENTORY ]" class="inventory-header" />
+        <ui:VisualElement name="body" class="inventory-body">
+            <ui:VisualElement name="member-panel" class="member-panel" />
+            <ui:VisualElement name="item-panel" class="item-panel">
+                <ui:Label name="item-header" class="item-panel-header" />
+                <ui:Label text="EQUIPPED:" class="section-header" />
+                <ui:VisualElement name="equipped-rows" />
+                <ui:Label name="bag-header" class="section-header" />
+                <ui:ScrollView name="bag-scroll" class="bag-scroll">
+                    <ui:VisualElement name="bag-rows" />
+                </ui:ScrollView>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:Label name="flash-message" class="flash-message" />
+
+        <ui:VisualElement name="trade-modal" class="modal-overlay">
+            <ui:VisualElement class="modal-box">
+                <ui:Label name="trade-title" class="modal-title" />
+                <ui:VisualElement name="trade-rows" />
+                <ui:Label text="Up/Down: choose recipient    Enter: send    ESC: cancel" class="modal-line" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:Label name="hint" class="hint-text" />
+    </ui:VisualElement>
+</ui:UXML>
