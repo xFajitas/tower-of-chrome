@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <Style src="Theme.uss" />
+    <ui:VisualElement name="root" class="screen-root class-select-root">
+        <ui:Label name="header" text="CHOOSE  YOUR  PARTY" class="class-select-header" />
+        <ui:VisualElement name="slot-list" class="slot-list" />
+        <ui:VisualElement name="detail-panel" class="detail-panel" />
+        <ui:Label name="hint" text="Up/Down: member    Left/Right: class    Enter: start game    ESC: back" class="hint-text" />
+    </ui:VisualElement>
+</ui:UXML>

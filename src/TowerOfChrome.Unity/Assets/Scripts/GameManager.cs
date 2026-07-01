@@ -161,6 +161,21 @@ namespace TowerOfChrome.Unity
 
         public bool SaveExists() => SaveLoadService.SaveExists(SavePath);
 
+        public SaveMetadata? GetSaveMetadata() => SaveLoadService.GetSaveMetadata(SavePath);
+
         public void DeleteSave() => SaveLoadService.DeleteSave(SavePath);
+
+        /// <summary>Starts a fresh game with the given (name, classId) starters: deletes any
+        /// existing save, builds a new Party, and resets floor/battle/kill counters. Mirrors
+        /// Python's ClassSelectScreen._confirm().</summary>
+        public void NewGame(IEnumerable<(string Name, string ClassId)> starters)
+        {
+            DeleteSave();
+            Party = Party.Build(starters, ClassRegistry, ItemRegistry, Leveling);
+            CurrentFloor = 1;
+            DungeonFloor = null;
+            Battle = null;
+            EnemiesDefeated = 0;
+        }
     }
 }

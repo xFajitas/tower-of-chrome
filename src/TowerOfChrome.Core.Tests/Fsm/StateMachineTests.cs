@@ -14,6 +14,7 @@ public class StateMachineTests
 
     [Theory]
     [InlineData(GameState.Menu, GameState.ClassSelect)]
+    [InlineData(GameState.Menu, GameState.Explore)] // "Continue" — see Transitions.cs remarks
     [InlineData(GameState.Menu, GameState.GameOver)]
     [InlineData(GameState.ClassSelect, GameState.Menu)]
     [InlineData(GameState.ClassSelect, GameState.Explore)]
@@ -38,7 +39,6 @@ public class StateMachineTests
 
     [Theory]
     [InlineData(GameState.Menu, GameState.Combat)]
-    [InlineData(GameState.Menu, GameState.Explore)]
     [InlineData(GameState.Explore, GameState.ClassSelect)]
     [InlineData(GameState.Combat, GameState.Menu)]
     [InlineData(GameState.Combat, GameState.ClassSelect)]

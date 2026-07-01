@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <Style src="Theme.uss" />
+    <ui:VisualElement name="root" class="screen-root">
+        <ui:VisualElement name="center" class="menu-center">
+            <ui:Label name="title" text="TOWER  OF  CHROME" class="menu-title" />
+            <ui:Label name="subtitle" text="A  R o g u e l i k e" class="menu-subtitle" />
+            <ui:VisualElement name="items-container" class="menu-items" />
+        </ui:VisualElement>
+        <ui:Label name="hint" text="Up / Down: Navigate    Enter: Select" class="hint-text" />
+    </ui:VisualElement>
+</ui:UXML>
