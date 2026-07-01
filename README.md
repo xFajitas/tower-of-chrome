@@ -6,6 +6,21 @@ A turn-based dungeon-crawler RPG. Pick a party of four, descend through a
 procedurally-generated tower fighting your way to the stairs, loot and
 equip gear along the way, and try not to wipe.
 
+## Installing (Windows SmartScreen warning)
+
+This installer isn't code-signed by a registered publisher (that requires a
+paid certificate), so Windows SmartScreen will show a blue **"Windows
+protected your PC"** screen the first time you run it. This is expected for
+small/indie software, not a sign anything is wrong. To proceed:
+
+1. On the SmartScreen warning, click **More info**.
+2. A **Run anyway** button appears — click it.
+3. The installer starts normally.
+
+If your browser also flags the download itself (e.g. Edge's "This file
+isn't commonly downloaded"), click the **...** menu next to it and choose
+**Keep**.
+
 ## Features
 
 - **16 classes** to assign across your 4-person party, each with their own
