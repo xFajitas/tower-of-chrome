@@ -1,0 +1,6 @@
+{
+    "_description": "Leveling curve and XP formula. xp_to_next(level) = floor(xp_base * level ^ xp_exponent).",
+    "max_level": 20,
+    "xp_base": 50,
+    "xp_exponent": 1.5
+}

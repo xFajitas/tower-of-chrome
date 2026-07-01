@@ -1,0 +1,41 @@
+{
+    "_description": "Combat formula constants. Change these to tune balance without touching code.",
+
+    "physical": {
+        "base_multiplier": 1.8,
+        "defense_factor":  0.5,
+        "variance":        0.12,
+        "crit_base_chance": 0.05,
+        "crit_multiplier":  2.0,
+        "luck_crit_factor": 0.004
+    },
+    "magical": {
+        "base_multiplier":  2.0,
+        "resistance_factor": 0.4,
+        "variance":          0.10,
+        "luck_crit_factor":  0.003
+    },
+    "healing": {
+        "base_multiplier": 2.2,
+        "variance":        0.08
+    },
+    "status_effects": {
+        "poison_dot_percent":  0.05,
+        "burn_flat_damage":    6,
+        "regen_heal_percent":  0.06,
+        "weakened_def_factor": 0.75,
+        "blessed_atk_factor":  1.15,
+        "haste_speed_bonus":   5,
+        "berserk_atk_factor":  1.40,
+        "berserk_def_factor":  0.70,
+        "guarding_dmg_factor": 0.55,
+        "thorns_reflect_pct":  0.15
+    },
+    "flee": {
+        "base_chance":    0.40,
+        "speed_factor":   0.02
+    },
+    "defend": {
+        "damage_factor":  0.40
+    }
+}

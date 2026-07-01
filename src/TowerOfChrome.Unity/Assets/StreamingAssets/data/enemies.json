@@ -1,0 +1,166 @@
+{
+    "_version": "1.0",
+    "_description": "Cyberpunk-themed enemy definitions. stat_growth scales per dungeon floor (floor-1 multiplier).",
+    "_tiers": ["common", "elite", "mini_boss", "boss"],
+    "_ai_behaviors": ["aggressive", "tactical", "support"],
+
+    "enemies": [
+
+        {
+            "id": "neon_grunt",
+            "name": "Neon Grunt",
+            "description": "A low-rank street soldier in flickering neon armour. Favours brute force.",
+            "tier": "common",
+            "base_stats":  { "hp": 55,  "mp": 20,  "str":  8, "dex":  7, "int":  3, "vit":  8, "spd":  7, "luck": 4 },
+            "stat_growth": { "hp": 8.0, "mp": 1.0, "str": 1.2, "dex": 0.8, "int": 0.2, "vit": 1.0, "spd": 0.4, "luck": 0.2 },
+            "abilities": ["basic_attack", "static_shock"],
+            "ai_behavior": "aggressive",
+            "xp_reward": 30,
+            "loot_table": "common_floor1"
+        },
+
+        {
+            "id": "chrome_hound",
+            "name": "Chrome Hound",
+            "description": "A cybernetically enhanced hunting beast. Fast, savage, and hard to outrun.",
+            "tier": "common",
+            "base_stats":  { "hp": 45,  "mp": 15,  "str": 10, "dex": 12, "int":  2, "vit":  6, "spd": 14, "luck": 5 },
+            "stat_growth": { "hp": 7.0, "mp": 1.0, "str": 1.5, "dex": 1.8, "int": 0.1, "vit": 0.8, "spd": 1.2, "luck": 0.3 },
+            "abilities": ["basic_attack", "rapid_strike"],
+            "ai_behavior": "aggressive",
+            "xp_reward": 35,
+            "loot_table": "common_floor1"
+        },
+
+        {
+            "id": "glitch_witch",
+            "name": "Glitch Witch",
+            "description": "A rogue AI fragment that casts corrupted spell-programs.",
+            "tier": "common",
+            "base_stats":  { "hp": 40,  "mp": 80,  "str":  4, "dex":  8, "int": 14, "vit":  5, "spd":  8, "luck": 7 },
+            "stat_growth": { "hp": 5.0, "mp": 8.0, "str": 0.3, "dex": 0.6, "int": 2.0, "vit": 0.4, "spd": 0.5, "luck": 0.5 },
+            "abilities": ["basic_attack", "data_surge", "firewall_breach"],
+            "ai_behavior": "tactical",
+            "xp_reward": 45,
+            "loot_table": "common_floor1"
+        },
+
+        {
+            "id": "wire_wraith",
+            "name": "Wire Wraith",
+            "description": "A spectral entity of tangled wires and corrupted code. Weakens and debilitates.",
+            "tier": "common",
+            "base_stats":  { "hp": 38,  "mp": 60,  "str":  5, "dex":  9, "int": 12, "vit":  5, "spd": 10, "luck": 8 },
+            "stat_growth": { "hp": 5.0, "mp": 6.0, "str": 0.4, "dex": 0.7, "int": 1.6, "vit": 0.4, "spd": 0.6, "luck": 0.6 },
+            "abilities": ["basic_attack", "signal_jam", "corrupted_upload"],
+            "ai_behavior": "support",
+            "xp_reward": 40,
+            "loot_table": "common_floor1"
+        },
+
+        {
+            "id": "nanobot_swarm",
+            "name": "Nanobot Swarm",
+            "description": "A cloud of microscopic machines that stings the entire party simultaneously.",
+            "tier": "common",
+            "base_stats":  { "hp": 35,  "mp": 20,  "str":  6, "dex": 10, "int":  5, "vit":  4, "spd": 11, "luck": 6 },
+            "stat_growth": { "hp": 4.0, "mp": 1.5, "str": 0.8, "dex": 1.2, "int": 0.5, "vit": 0.3, "spd": 0.8, "luck": 0.4 },
+            "abilities": ["swarm_sting"],
+            "ai_behavior": "aggressive",
+            "xp_reward": 25,
+            "loot_table": "common_floor1"
+        },
+
+        {
+            "id": "pulse_drone",
+            "name": "Pulse Drone",
+            "description": "An automated combat drone that fires energy pulses from a safe distance.",
+            "tier": "common",
+            "base_stats":  { "hp": 42,  "mp": 40,  "str":  5, "dex": 13, "int":  9, "vit":  5, "spd": 12, "luck": 8 },
+            "stat_growth": { "hp": 6.0, "mp": 4.0, "str": 0.5, "dex": 1.6, "int": 1.2, "vit": 0.5, "spd": 1.0, "luck": 0.6 },
+            "abilities": ["pulse_shot", "emp_burst"],
+            "ai_behavior": "tactical",
+            "xp_reward": 35,
+            "loot_table": "common_floor1"
+        },
+
+        {
+            "id": "neon_berserker",
+            "name": "Neon Berserker",
+            "description": "A street fighter overclocked on stimulants and rage. Hits hard and fast.",
+            "tier": "elite",
+            "base_stats":  { "hp": 65,  "mp": 20,  "str": 15, "dex":  8, "int":  3, "vit": 10, "spd": 10, "luck": 5 },
+            "stat_growth": { "hp": 9.0, "mp": 2.0, "str": 2.2, "dex": 0.8, "int": 0.2, "vit": 1.2, "spd": 0.8, "luck": 0.3 },
+            "abilities": ["basic_attack", "neon_rage", "overclocked_fist"],
+            "ai_behavior": "aggressive",
+            "xp_reward": 55,
+            "loot_table": "elite_floor1"
+        },
+
+        {
+            "id": "steel_samurai",
+            "name": "Steel Samurai",
+            "description": "An elite cyborg warrior in powered armour. Disciplined and extremely dangerous.",
+            "tier": "elite",
+            "base_stats":  { "hp": 80,  "mp": 30,  "str": 14, "dex": 10, "int":  4, "vit": 14, "spd":  9, "luck": 5 },
+            "stat_growth": { "hp": 11.0, "mp": 3.0, "str": 2.0, "dex": 1.2, "int": 0.3, "vit": 2.0, "spd": 0.7, "luck": 0.3 },
+            "abilities": ["basic_attack", "cyber_blade", "iron_will"],
+            "ai_behavior": "tactical",
+            "xp_reward": 80,
+            "loot_table": "elite_floor1"
+        },
+
+        {
+            "id": "grid_specter",
+            "name": "Grid Specter",
+            "description": "A digital ghost that flits between physical and data realms, almost untouchable.",
+            "tier": "elite",
+            "base_stats":  { "hp": 35,  "mp": 50,  "str":  7, "dex": 18, "int": 10, "vit":  4, "spd": 18, "luck": 12 },
+            "stat_growth": { "hp": 4.0, "mp": 5.0, "str": 0.7, "dex": 2.5, "int": 1.4, "vit": 0.3, "spd": 1.8, "luck": 1.0 },
+            "abilities": ["basic_attack", "phase_shift", "spectral_slash"],
+            "ai_behavior": "tactical",
+            "xp_reward": 60,
+            "loot_table": "elite_floor1"
+        },
+
+        {
+            "id": "data_wraith",
+            "name": "Data Wraith",
+            "description": "A predatory data entity that feeds on magical energy and corrupts its hosts.",
+            "tier": "elite",
+            "base_stats":  { "hp": 50,  "mp": 90,  "str":  4, "dex":  8, "int": 16, "vit":  7, "spd":  9, "luck": 9 },
+            "stat_growth": { "hp": 6.0, "mp": 10.0, "str": 0.3, "dex": 0.7, "int": 2.3, "vit": 0.6, "spd": 0.7, "luck": 0.7 },
+            "abilities": ["basic_attack", "mana_siphon", "corruption_wave"],
+            "ai_behavior": "support",
+            "xp_reward": 65,
+            "loot_table": "elite_floor1"
+        },
+
+        {
+            "id": "nexus_core",
+            "name": "Nexus Core",
+            "description": "A heavily armoured combat AI that serves as the guardian of the mid-dungeon control node.",
+            "tier": "mini_boss",
+            "base_stats":  { "hp": 200,  "mp": 120,  "str": 16, "dex": 10, "int": 18, "vit": 18, "spd":  8, "luck": 6 },
+            "stat_growth": { "hp": 25.0, "mp": 14.0, "str": 2.5, "dex": 1.2, "int": 2.8, "vit": 3.0, "spd": 0.6, "luck": 0.4 },
+            "abilities": ["basic_attack", "overcharge", "system_purge", "core_meltdown"],
+            "ai_behavior": "tactical",
+            "xp_reward": 300,
+            "loot_table": "mini_boss"
+        },
+
+        {
+            "id": "circuit_mage",
+            "name": "Circuit Mage",
+            "description": "The architect of the dungeon's digital layer. This ancient battle-AI wields reality-warping digital sorcery.",
+            "tier": "boss",
+            "base_stats":  { "hp": 350,  "mp": 200,  "str":  8, "dex": 10, "int": 24, "vit": 14, "spd": 10, "luck": 10 },
+            "stat_growth": { "hp": 40.0, "mp": 22.0, "str": 0.8, "dex": 1.0, "int": 4.0, "vit": 2.0, "spd": 0.8, "luck": 0.8 },
+            "abilities": ["basic_attack", "circuit_storm", "digital_annihilation", "system_reboot", "overclock_prime"],
+            "ai_behavior": "tactical",
+            "xp_reward": 1000,
+            "loot_table": "boss"
+        }
+
+    ]
+}
