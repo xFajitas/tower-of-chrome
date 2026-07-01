@@ -10,6 +10,11 @@
          (file-scoped namespaces, records, etc.) while still compiling against the
          netstandard2.1 API surface for Unity Mono/IL2CPP compatibility. -->
     <LangVersion>latest</LangVersion>
+    <!-- Unity loads this DLL as a standalone plugin outside the dotnet build graph, so its
+         NuGet dependency DLLs (System.Text.Json, System.Collections.Immutable, and their own
+         transitive deps) must be physically copied alongside it, not just resolved at
+         restore/build time the way a ProjectReference consumer would. -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
