@@ -308,14 +308,22 @@
 
 .hud-equip-row {
     flex-direction: row;
+    flex-shrink: 0;
+    height: 20px;
     margin-top: 3px;
 }
 
 .hud-equip-icon {
     width: 18px;
     height: 18px;
+    flex-shrink: 0;
     margin-right: 3px;
-    -unity-background-scale-mode: scale-to-fit;
+    /* These weapon icons were cropped from tall/thin "held in hand" glyphs (e.g. a 16x16
+       staff sprite is really only ~16x60 of visible content once padding is trimmed), not
+       square icons -- scale-to-fit letterboxes them down to an near-invisible sliver in a
+       square box. scale-and-crop fills the box instead, at the cost of trimming the glyph's
+       extremities, which reads far better at this size. */
+    -unity-background-scale-mode: scale-and-crop;
 }
 
 .hud-status-tag {
@@ -690,7 +698,7 @@
     width: 18px;
     height: 18px;
     margin-right: 6px;
-    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-scale-mode: scale-and-crop;
 }
 
 .slot-label--selected {
