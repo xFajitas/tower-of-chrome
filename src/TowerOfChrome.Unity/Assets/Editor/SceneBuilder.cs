@@ -74,6 +74,9 @@ public static class SceneBuilder
                 case GameState.Inventory:
                     AddScreenUi<InventoryScreenView>(root, "Assets/UI/InventoryScreen.uxml", panelSettings, gm);
                     break;
+                case GameState.GameOver:
+                    AddScreenUi<GameOverScreenView>(root, "Assets/UI/GameOverScreen.uxml", panelSettings, gm);
+                    break;
             }
         }
 

@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <Style src="Theme.uss" />
+    <ui:VisualElement name="root" class="screen-root gameover-root">
+        <ui:VisualElement class="gameover-center">
+            <ui:Label text="GAME OVER" class="gameover-title" />
+            <ui:Label text="The party has fallen in the dungeon." class="gameover-subtitle" />
+            <ui:Label name="summary" class="gameover-summary" />
+        </ui:VisualElement>
+        <ui:Label text="Enter / ESC: Return to Menu" class="hint-text" />
+    </ui:VisualElement>
+</ui:UXML>

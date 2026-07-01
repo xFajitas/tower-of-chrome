@@ -53,6 +53,39 @@
     -unity-font-style: bold;
 }
 
+/* ---- Game over screen ---- */
+
+.gameover-root {
+    background-color: rgb(6, 0, 0);
+}
+
+.gameover-center {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameover-title {
+    font-size: 60px;
+    color: rgb(210, 30, 30);
+    -unity-text-align: middle-center;
+    letter-spacing: 6px;
+    margin-bottom: 16px;
+}
+
+.gameover-subtitle {
+    font-size: 20px;
+    color: rgb(160, 70, 70);
+    -unity-text-align: middle-center;
+    margin-bottom: 12px;
+}
+
+.gameover-summary {
+    font-size: 15px;
+    color: rgb(120, 60, 60);
+    -unity-text-align: middle-center;
+}
+
 /* ---- Class select screen ---- */
 
 .class-select-root {
