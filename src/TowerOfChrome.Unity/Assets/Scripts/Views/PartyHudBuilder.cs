@@ -1,12 +1,14 @@
 using TowerOfChrome.Core.Entities;
+using TowerOfChrome.Core.Loot;
 using UnityEngine.UIElements;
 
 namespace TowerOfChrome.Unity.Views
 {
     /// <summary>
-    /// Renders the party status panel (name/level/class, HP/MP bars, K.O./status tags) into any
-    /// container VisualElement. Shared across Explore/Combat/Inventory, matching Python's
-    /// BaseScreen._draw_party_hud helper used identically by all three screens there.
+    /// Renders the party status panel (name/level/class, HP/MP bars, K.O./status tags, equipped
+    /// -gear icons) into any container VisualElement. Shared across Explore/Combat/Inventory,
+    /// matching Python's BaseScreen._draw_party_hud helper used identically by all three screens
+    /// there (the equipped-gear icon row is new, Python's version was text-only).
     /// </summary>
     public static class PartyHudBuilder
     {
@@ -15,7 +17,7 @@ namespace TowerOfChrome.Unity.Views
         /// through the render call itself.</summary>
         public static string RowName(string combatantId) => $"combatant-row-{combatantId}";
 
-        public static void Render(VisualElement container, Party party)
+        public static void Render(VisualElement container, Party party, ItemRegistry itemRegistry)
         {
             container.Clear();
             container.AddToClassList("hud-panel");
@@ -51,6 +53,23 @@ namespace TowerOfChrome.Unity.Views
 
                 header.Add(textCol);
                 row.Add(header);
+
+                var equipRow = new VisualElement();
+                equipRow.AddToClassList("hud-equip-row");
+                foreach (var slotItemId in member.Equipment.Values)
+                {
+                    if (slotItemId == null)
+                        continue;
+                    var icon = ItemIcons.ForItemId(itemRegistry, slotItemId);
+                    if (icon == null)
+                        continue;
+                    var iconEl = new VisualElement();
+                    iconEl.AddToClassList("hud-equip-icon");
+                    iconEl.style.backgroundImage = new StyleBackground(icon);
+                    equipRow.Add(iconEl);
+                }
+                if (equipRow.childCount > 0)
+                    row.Add(equipRow);
 
                 row.Add(BuildBar(member.HpFraction, "hud-bar-fill--hp", $"{member.CurrentHp}/{member.MaxHp}"));
                 row.Add(BuildBar(member.MpFraction, "hud-bar-fill--mp", $"{member.CurrentMp}/{member.MaxMp}"));

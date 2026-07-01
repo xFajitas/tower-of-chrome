@@ -306,6 +306,18 @@
     margin-top: 2px;
 }
 
+.hud-equip-row {
+    flex-direction: row;
+    margin-top: 3px;
+}
+
+.hud-equip-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
 .hud-status-tag {
     font-size: 10px;
     margin-right: 4px;
@@ -672,6 +684,13 @@
     width: 100px;
     font-size: 12px;
     color: rgb(110, 115, 150);
+}
+
+.item-row-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    -unity-background-scale-mode: scale-to-fit;
 }
 
 .slot-label--selected {

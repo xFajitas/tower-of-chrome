@@ -1,33 +1,13 @@
 # Tower of Chrome
 
+[![Download](https://img.shields.io/badge/Download-Latest%20Release-2ea44f?style=for-the-badge)](https://github.com/xFajitas/tower-of-chrome/releases/latest)
+
 A Unity/C# rewrite of *Dungeon of Chrome*, a turn-based dungeon-crawler RPG
-originally written in Python/pygame. This project ports the full game —
-combat, classes, abilities, procedural dungeons, loot, leveling, and
-save/load — to Unity 6 with UI Toolkit, keyboard- and mouse-driven.
+originally written in Python/pygame.
 
 The original Python version lives at
 [`Dungeon-of-chrome`](https://github.com/xFajitas/Dungeon-of-chrome) and is
 left running/untouched; this repo is a from-scratch rewrite, not a fork.
-
-## Download
-
-Prebuilt Windows installers are published under
-[Releases](https://github.com/xFajitas/tower-of-chrome/releases). Grab the
-latest `TowerOfChrome-Setup-*.exe`, run it, and launch from the Start Menu.
-
-## What's here
-
-- **6 screens**: Menu, Class Select, Explore (procedural dungeon map),
-  Combat, Inventory & Trading, Game Over.
-- **16 classes, 89 abilities, 12 enemies, 70 items** — ported 1:1 from the
-  Python data files (`data/*.json`), including the subtler combat-formula
-  quirks (see `docs/porting-notes.md`).
-- Full keyboard **and** mouse controls on every screen.
-- First-pass CC0 art (Kenney.nl) for the dungeon map, party/class portraits,
-  and UI panels — see `docs/art-credits.md` for sourcing and what's still
-  placeholder.
-- Save/load against the real Windows user data folder
-  (`%AppData%\LocalLow\<Company>\Tower of Chrome\`).
 
 ## Project layout
 
@@ -96,4 +76,7 @@ via `Assets/Editor/SceneBuilder.cs`):
 "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer\TowerOfChrome.iss
 ```
 
-Output lands in `installer/Output/`.
+Output lands in `installer/Output/`. The installer script (`installer/TowerOfChrome.iss`)
+detects and silently removes a previous install of the same AppId before
+copying new files, so re-running it on a machine with an older version
+upgrades cleanly rather than leaving stale files behind.

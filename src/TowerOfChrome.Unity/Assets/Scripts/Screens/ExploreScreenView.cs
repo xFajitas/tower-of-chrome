@@ -330,7 +330,7 @@ namespace TowerOfChrome.Unity.Screens
                 ? $"Party: {livingCount}/{totalCount} alive    Floor {gameManager.CurrentFloor}"
                 : _msg;
 
-            PartyHudBuilder.Render(_hudContainer, gameManager.Party);
+            PartyHudBuilder.Render(_hudContainer, gameManager.Party, gameManager.ItemRegistry);
 
             _stairsModal.EnableInClassList("modal-overlay--visible", State == ExploreUiState.StairsConfirm);
             _lootModal.EnableInClassList("modal-overlay--visible", State == ExploreUiState.LootShow);

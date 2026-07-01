@@ -591,6 +591,16 @@ namespace TowerOfChrome.Unity.Screens
                 if (row.ItemId != null)
                 {
                     var item = gameManager.ItemRegistry.Get(row.ItemId);
+
+                    var icon = ItemIcons.For(item);
+                    if (icon != null)
+                    {
+                        var iconEl = new VisualElement();
+                        iconEl.AddToClassList("item-row-icon");
+                        iconEl.style.backgroundImage = new StyleBackground(icon);
+                        rowEl.Add(iconEl);
+                    }
+
                     var nameLabel = new Label(item.Name);
                     nameLabel.AddToClassList("item-name");
                     nameLabel.style.color = RarityColors.Get(item.Rarity);
@@ -649,6 +659,15 @@ namespace TowerOfChrome.Unity.Screens
                     if (selected)
                         rowEl.AddToClassList("bag-row--selected");
                     rowEl.RegisterCallback<ClickEvent>(_ => ClickItemRow(globalIndex));
+
+                    var icon = ItemIcons.For(item);
+                    if (icon != null)
+                    {
+                        var iconEl = new VisualElement();
+                        iconEl.AddToClassList("item-row-icon");
+                        iconEl.style.backgroundImage = new StyleBackground(icon);
+                        rowEl.Add(iconEl);
+                    }
 
                     var nameLabel = new Label(item.Name);
                     nameLabel.AddToClassList("bag-item-name");

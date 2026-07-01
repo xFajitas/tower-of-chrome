@@ -43,11 +43,18 @@ tooling, not project code).
 - `UI/panel_border.png` — shared 9-sliced background for `.modal-box`
   (Explore's stairs/loot modals, Combat's victory/defeat modals, Inventory's
   trade modal).
+- `Items/weapon_{blade,dagger,axe,mace,bow,staff}.png` — 6 icons covering the
+  9 `weapon_type`s (see `ItemIcons.WeaponTypeToResource`): greatsword reuses
+  the sword blade, wand and grimoire both reuse the staff icon. Used in
+  Inventory's equipped/bag rows and as the party HUD's per-member equipped
+  -gear row (`PartyHudBuilder`'s `.hud-equip-row`) so party members visibly
+  show what they have equipped rather than just naming it in text.
+- `Items/{armor,accessory,charm,potion}_icon.png` — one icon per category
+  regardless of the specific item or `armor_type`, same reasoning as above.
 
 ## Deliberately out of scope this pass
 
-Item icons (Inventory bag/equipped rows are still text+rarity-color only),
-a dedicated Menu-screen background/logo treatment, and literal per-enemy
-monster art (12 bespoke sprites) — the tint-based reuse above was chosen
-instead to keep this pass scoped. Revisit if the flat rarity-color item rows
-or the tinted-reuse enemies feel too thin later.
+A dedicated Menu-screen background/logo treatment and literal per-enemy
+monster art (12 bespoke sprites, currently one tinted-reuse sprite per
+`docs/art-credits.md`'s enemy section above) — revisit if the tinted-reuse
+enemies feel too thin later.

@@ -401,7 +401,7 @@ namespace TowerOfChrome.Unity.Screens
 
             RenderEnemies(battle);
             RenderLog(battle);
-            PartyHudBuilder.Render(_hudContainer, gameManager.Party);
+            PartyHudBuilder.Render(_hudContainer, gameManager.Party, gameManager.ItemRegistry);
             RenderActionArea(battle);
 
             _victoryModal.EnableInClassList("modal-overlay--visible", State == CombatUiState.Victory);
