@@ -358,6 +358,15 @@ namespace TowerOfChrome.Unity.Screens
                 else
                     node.AddToClassList("room-node--unvisited");
 
+                var icon = RoomIcons.Get(room.RoomType);
+                if (icon != null)
+                {
+                    var iconEl = new VisualElement();
+                    iconEl.AddToClassList("room-node-icon");
+                    iconEl.style.backgroundImage = new StyleBackground(icon);
+                    node.Add(iconEl);
+                }
+
                 var label = new Label(RoomLabels[room.RoomType]);
                 label.AddToClassList("room-node-label");
                 node.Add(label);

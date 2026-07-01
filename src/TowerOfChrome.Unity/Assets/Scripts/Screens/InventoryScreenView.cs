@@ -483,11 +483,24 @@ namespace TowerOfChrome.Unity.Screens
                 if (i == MemberSelected)
                     row.AddToClassList("member-row--selected");
 
+                var header = new VisualElement();
+                header.AddToClassList("member-row-header");
+
+                var avatarTex = ArchetypeIcons.ForRole(member.ClassDef.Role);
+                if (avatarTex != null)
+                {
+                    var avatar = new VisualElement();
+                    avatar.AddToClassList("member-avatar");
+                    avatar.style.backgroundImage = new StyleBackground(avatarTex);
+                    header.Add(avatar);
+                }
+
                 var nameLabel = new Label(member.Name);
                 nameLabel.AddToClassList("member-name");
                 if (i == MemberSelected)
                     nameLabel.AddToClassList("member-name--selected");
-                row.Add(nameLabel);
+                header.Add(nameLabel);
+                row.Add(header);
 
                 var classLabel = new Label($"{member.ClassDef.Name}  Lv.{member.Level}");
                 classLabel.AddToClassList("member-class");

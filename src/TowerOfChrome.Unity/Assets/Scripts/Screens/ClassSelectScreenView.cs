@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TowerOfChrome.Core.Entities;
 using TowerOfChrome.Core.Fsm;
+using TowerOfChrome.Unity.Views;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -134,6 +135,15 @@ namespace TowerOfChrome.Unity.Screens
         {
             _detailPanel.Clear();
             var classDef = gameManager.ClassRegistry.Get(_classIds[_choiceIdx[_slotSel]]);
+
+            var portrait = ArchetypeIcons.ForRole(classDef.Role);
+            if (portrait != null)
+            {
+                var portraitEl = new VisualElement();
+                portraitEl.AddToClassList("detail-portrait");
+                portraitEl.style.backgroundImage = new StyleBackground(portrait);
+                _detailPanel.Add(portraitEl);
+            }
 
             var nameLabel = new Label(classDef.Name);
             nameLabel.AddToClassList("detail-name");

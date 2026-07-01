@@ -20,15 +20,31 @@ namespace TowerOfChrome.Unity.Views
                 var row = new VisualElement();
                 row.AddToClassList("hud-row");
 
+                var header = new VisualElement();
+                header.AddToClassList("hud-row-header");
+
+                var avatar = new VisualElement();
+                avatar.AddToClassList("hud-avatar");
+                var avatarTex = ArchetypeIcons.ForRole(member.ClassDef.Role);
+                if (avatarTex != null)
+                    avatar.style.backgroundImage = new StyleBackground(avatarTex);
+                header.Add(avatar);
+
+                var textCol = new VisualElement();
+                textCol.AddToClassList("hud-text-col");
+
                 var nameLabel = new Label($"{member.Name}  Lv.{member.Level}");
                 nameLabel.AddToClassList("hud-name");
                 if (member.IsKo)
                     nameLabel.AddToClassList("hud-name--dead");
-                row.Add(nameLabel);
+                textCol.Add(nameLabel);
 
                 var classLabel = new Label(member.ClassDef.Name);
                 classLabel.AddToClassList("hud-class");
-                row.Add(classLabel);
+                textCol.Add(classLabel);
+
+                header.Add(textCol);
+                row.Add(header);
 
                 row.Add(BuildBar(member.HpFraction, "hud-bar-fill--hp", $"{member.CurrentHp}/{member.MaxHp}"));
                 row.Add(BuildBar(member.MpFraction, "hud-bar-fill--mp", $"{member.CurrentMp}/{member.MaxMp}"));

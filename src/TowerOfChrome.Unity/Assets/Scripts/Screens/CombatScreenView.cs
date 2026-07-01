@@ -394,6 +394,16 @@ namespace TowerOfChrome.Unity.Screens
                 if (selected)
                     row.AddToClassList("enemy-row--selected");
 
+                var avatarTex = ArchetypeIcons.EnemyBase();
+                if (avatarTex != null)
+                {
+                    var avatar = new VisualElement();
+                    avatar.AddToClassList("enemy-avatar");
+                    avatar.style.backgroundImage = new StyleBackground(avatarTex);
+                    avatar.style.unityBackgroundImageTintColor = ArchetypeIcons.EnemyTint(enemy.EnemyDef.Id);
+                    row.Add(avatar);
+                }
+
                 var nameLabel = new Label(enemy.Name);
                 nameLabel.AddToClassList("enemy-name");
                 if (enemy.IsKo)
