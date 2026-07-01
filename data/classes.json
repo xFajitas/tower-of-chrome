@@ -1,0 +1,266 @@
+{
+    "_version": "1.0",
+    "_description": "All 16 playable classes. base_stats are level-1 values. stat_growth is added (level-1) times.",
+    "stat_keys": ["hp", "mp", "str", "dex", "int", "vit", "spd", "luck"],
+    "roles": ["tank", "melee_dps", "ranged_dps", "healer", "support", "magic_dps", "summoner", "hybrid"],
+
+    "classes": [
+
+        {
+            "id": "knight",
+            "name": "Knight",
+            "description": "Stalwart defender clad in heavy plate. Masters of sword and shield — knights draw enemy fire and outlast all opposition.",
+            "role": "tank",
+            "resource": "mp",
+            "resource_name": "Mana",
+            "base_stats":  { "hp": 130, "mp":  40, "str": 14, "dex":  8, "int":  5, "vit": 18, "spd":  6, "luck":  5 },
+            "stat_growth": { "hp": 20.0, "mp": 4.0, "str": 2.0, "dex": 0.5, "int": 0.3, "vit": 2.5, "spd": 0.2, "luck": 0.2 },
+            "weapon_types": ["sword", "axe", "mace"],
+            "armor_types":  ["heavy"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["slash", "shield_bash", "taunt", "guard_stance"],
+            "starting_weapon": "iron_sword"
+        },
+
+        {
+            "id": "berserker",
+            "name": "Berserker",
+            "description": "Fueled by rage, berserkers sacrifice defense for overwhelming offensive power. The angrier they get, the harder they hit.",
+            "role": "melee_dps",
+            "resource": "rage",
+            "resource_name": "Rage",
+            "base_stats":  { "hp": 115, "mp":  20, "str": 18, "dex": 10, "int":  2, "vit": 12, "spd":  9, "luck":  6 },
+            "stat_growth": { "hp": 15.0, "mp": 2.0, "str": 3.0, "dex": 1.0, "int": 0.1, "vit": 1.5, "spd": 0.8, "luck": 0.3 },
+            "weapon_types": ["axe", "greatsword"],
+            "armor_types":  ["medium"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["cleave", "berserk", "reckless_strike", "battle_cry"],
+            "starting_weapon": "iron_axe"
+        },
+
+        {
+            "id": "paladin",
+            "name": "Paladin",
+            "description": "Holy warrior who channels divine power to smite enemies and mend allies. A balanced blend of offense and support.",
+            "role": "hybrid",
+            "resource": "mp",
+            "resource_name": "Faith",
+            "base_stats":  { "hp": 120, "mp":  70, "str": 12, "dex":  7, "int": 10, "vit": 16, "spd":  6, "luck":  7 },
+            "stat_growth": { "hp": 17.0, "mp": 8.0, "str": 1.5, "dex": 0.4, "int": 1.2, "vit": 2.0, "spd": 0.2, "luck": 0.4 },
+            "weapon_types": ["sword", "mace"],
+            "armor_types":  ["heavy"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["holy_strike", "lay_on_hands", "consecrate", "divine_shield"],
+            "starting_weapon": "iron_mace"
+        },
+
+        {
+            "id": "guardian",
+            "name": "Guardian",
+            "description": "The ultimate bulwark. Guardians absorb punishment meant for allies and can shield the party from catastrophic blows.",
+            "role": "tank",
+            "resource": "mp",
+            "resource_name": "Resolve",
+            "base_stats":  { "hp": 155, "mp":  25, "str": 10, "dex":  6, "int":  3, "vit": 22, "spd":  4, "luck":  4 },
+            "stat_growth": { "hp": 25.0, "mp": 2.0, "str": 1.2, "dex": 0.3, "int": 0.2, "vit": 3.5, "spd": 0.1, "luck": 0.2 },
+            "weapon_types": ["sword", "mace", "axe"],
+            "armor_types":  ["heavy"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["provoke", "fortress_stance", "aegis", "last_stand"],
+            "starting_weapon": "iron_mace"
+        },
+
+        {
+            "id": "ranger",
+            "name": "Ranger",
+            "description": "Swift hunters who excel at ranged combat. Rangers pick off enemies from a safe distance and lay deadly traps.",
+            "role": "ranged_dps",
+            "resource": "mp",
+            "resource_name": "Focus",
+            "base_stats":  { "hp":  95, "mp":  50, "str": 10, "dex": 16, "int":  7, "vit": 10, "spd": 12, "luck": 10 },
+            "stat_growth": { "hp": 12.0, "mp": 5.0, "str": 1.0, "dex": 2.5, "int": 0.6, "vit": 1.0, "spd": 1.2, "luck": 1.0 },
+            "weapon_types": ["bow", "dagger"],
+            "armor_types":  ["light"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["aimed_shot", "multishot", "evasive_roll", "hunters_mark"],
+            "starting_weapon": "short_bow"
+        },
+
+        {
+            "id": "assassin",
+            "name": "Assassin",
+            "description": "Masters of the first strike. Assassins deal devastating burst damage from the shadows before vanishing.",
+            "role": "melee_dps",
+            "resource": "mp",
+            "resource_name": "Energy",
+            "base_stats":  { "hp":  85, "mp":  60, "str": 14, "dex": 18, "int":  6, "vit":  8, "spd": 15, "luck": 12 },
+            "stat_growth": { "hp": 10.0, "mp": 6.0, "str": 1.8, "dex": 2.8, "int": 0.4, "vit": 0.8, "spd": 1.5, "luck": 1.2 },
+            "weapon_types": ["dagger", "sword"],
+            "armor_types":  ["light"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["backstab", "poison_blade", "shadow_step", "execute"],
+            "starting_weapon": "iron_dagger"
+        },
+
+        {
+            "id": "thief",
+            "name": "Thief",
+            "description": "Opportunistic scoundrels with a knack for finding treasure. Thieves are mobile, lucky, and surprisingly resilient.",
+            "role": "ranged_dps",
+            "resource": "mp",
+            "resource_name": "Cunning",
+            "base_stats":  { "hp":  90, "mp":  45, "str": 11, "dex": 17, "int":  5, "vit":  9, "spd": 14, "luck": 15 },
+            "stat_growth": { "hp": 11.0, "mp": 4.0, "str": 1.2, "dex": 2.5, "int": 0.3, "vit": 0.9, "spd": 1.3, "luck": 1.8 },
+            "weapon_types": ["dagger", "bow"],
+            "armor_types":  ["light"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["pickpocket", "smoke_bomb", "cheap_shot", "lucky_strike"],
+            "starting_weapon": "iron_dagger"
+        },
+
+        {
+            "id": "monk",
+            "name": "Monk",
+            "description": "Disciplined martial artists who channel inner energy through unarmed combat. Monks blend offense, defense, and support.",
+            "role": "hybrid",
+            "resource": "chi",
+            "resource_name": "Chi",
+            "base_stats":  { "hp": 105, "mp":  80, "str": 13, "dex": 15, "int":  9, "vit": 13, "spd": 13, "luck":  8 },
+            "stat_growth": { "hp": 14.0, "mp": 9.0, "str": 1.6, "dex": 1.8, "int": 0.9, "vit": 1.4, "spd": 1.1, "luck": 0.6 },
+            "weapon_types": ["staff", "fist"],
+            "armor_types":  ["light"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["roundhouse", "iron_fist", "chi_blast", "inner_peace"],
+            "starting_weapon": "oak_staff"
+        },
+
+        {
+            "id": "mage",
+            "name": "Mage",
+            "description": "Scholars of arcane destruction. Mages unleash catastrophic spell damage but are physically fragile.",
+            "role": "magic_dps",
+            "resource": "mp",
+            "resource_name": "Mana",
+            "base_stats":  { "hp":  70, "mp": 130, "str":  4, "dex":  8, "int": 20, "vit":  6, "spd":  8, "luck":  8 },
+            "stat_growth": { "hp":  8.0, "mp": 18.0, "str": 0.2, "dex": 0.5, "int": 3.5, "vit": 0.5, "spd": 0.4, "luck": 0.5 },
+            "weapon_types": ["staff", "wand"],
+            "armor_types":  ["light"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["fireball", "ice_lance", "lightning_bolt", "arcane_surge"],
+            "starting_weapon": "oak_staff"
+        },
+
+        {
+            "id": "warlock",
+            "name": "Warlock",
+            "description": "Wielders of dark pacts and forbidden magic. Warlocks drain life, apply crippling curses, and bend the battlefield.",
+            "role": "magic_dps",
+            "resource": "mp",
+            "resource_name": "Dark Energy",
+            "base_stats":  { "hp":  75, "mp": 110, "str":  5, "dex":  9, "int": 18, "vit":  7, "spd":  9, "luck":  7 },
+            "stat_growth": { "hp":  9.0, "mp": 14.0, "str": 0.3, "dex": 0.6, "int": 3.0, "vit": 0.6, "spd": 0.5, "luck": 0.4 },
+            "weapon_types": ["staff", "grimoire"],
+            "armor_types":  ["light"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["life_drain", "curse", "shadow_bolt", "dark_pact"],
+            "starting_weapon": "bone_staff"
+        },
+
+        {
+            "id": "necromancer",
+            "name": "Necromancer",
+            "description": "Commanders of the undead. Necromancers raise fallen foes as servants and wield death magic to decay and destroy.",
+            "role": "summoner",
+            "resource": "mp",
+            "resource_name": "Soul Energy",
+            "base_stats":  { "hp":  72, "mp": 120, "str":  4, "dex":  7, "int": 17, "vit":  7, "spd":  7, "luck":  9 },
+            "stat_growth": { "hp":  9.0, "mp": 16.0, "str": 0.2, "dex": 0.4, "int": 2.8, "vit": 0.6, "spd": 0.3, "luck": 0.6 },
+            "weapon_types": ["staff", "grimoire"],
+            "armor_types":  ["light"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["raise_dead", "bone_spear", "plague", "death_coil"],
+            "starting_weapon": "bone_staff"
+        },
+
+        {
+            "id": "druid",
+            "name": "Druid",
+            "description": "Keepers of natural balance who alternate between healing allies and unleashing the fury of the wild.",
+            "role": "healer",
+            "resource": "mp",
+            "resource_name": "Nature",
+            "base_stats":  { "hp":  88, "mp": 100, "str":  7, "dex": 10, "int": 15, "vit": 10, "spd":  9, "luck":  9 },
+            "stat_growth": { "hp": 12.0, "mp": 13.0, "str": 0.6, "dex": 0.8, "int": 2.3, "vit": 1.0, "spd": 0.6, "luck": 0.7 },
+            "weapon_types": ["staff", "bow"],
+            "armor_types":  ["medium"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["regrowth", "entangle", "thorns", "wild_growth"],
+            "starting_weapon": "oak_staff"
+        },
+
+        {
+            "id": "cleric",
+            "name": "Cleric",
+            "description": "Dedicated healers devoted to keeping the party alive. Clerics mend wounds and bolster allies with divine blessings.",
+            "role": "healer",
+            "resource": "mp",
+            "resource_name": "Faith",
+            "base_stats":  { "hp":  95, "mp": 115, "str":  8, "dex":  7, "int": 14, "vit": 12, "spd":  7, "luck":  8 },
+            "stat_growth": { "hp": 13.0, "mp": 15.0, "str": 0.7, "dex": 0.4, "int": 2.2, "vit": 1.3, "spd": 0.3, "luck": 0.5 },
+            "weapon_types": ["mace", "staff"],
+            "armor_types":  ["medium"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["heal", "cure", "bless", "holy_light"],
+            "starting_weapon": "iron_mace"
+        },
+
+        {
+            "id": "bard",
+            "name": "Bard",
+            "description": "Charismatic performers who inspire allies with song and spell. Bards excel at buffing the party and debuffing enemies.",
+            "role": "support",
+            "resource": "inspiration",
+            "resource_name": "Inspiration",
+            "base_stats":  { "hp":  92, "mp":  95, "str":  9, "dex": 12, "int": 13, "vit": 10, "spd": 11, "luck": 13 },
+            "stat_growth": { "hp": 12.0, "mp": 12.0, "str": 0.8, "dex": 1.2, "int": 1.8, "vit": 1.0, "spd": 0.9, "luck": 1.3 },
+            "weapon_types": ["sword", "dagger"],
+            "armor_types":  ["light"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["battle_hymn", "dissonance", "lullaby", "encore"],
+            "starting_weapon": "iron_dagger"
+        },
+
+        {
+            "id": "alchemist",
+            "name": "Alchemist",
+            "description": "Experimental craftspeople who weaponize potions and transmutations. Alchemists deal AoE damage and supply consumable support.",
+            "role": "support",
+            "resource": "mp",
+            "resource_name": "Reagents",
+            "base_stats":  { "hp":  88, "mp":  90, "str":  8, "dex": 11, "int": 16, "vit":  9, "spd": 10, "luck": 11 },
+            "stat_growth": { "hp": 11.0, "mp": 11.0, "str": 0.6, "dex": 0.9, "int": 2.5, "vit": 0.9, "spd": 0.7, "luck": 0.9 },
+            "weapon_types": ["dagger", "staff"],
+            "armor_types":  ["medium"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["throw_bomb", "acid_splash", "elixir", "transmute"],
+            "starting_weapon": "iron_dagger"
+        },
+
+        {
+            "id": "spellblade",
+            "name": "Spellblade",
+            "description": "Warriors who have mastered arcane infusion. Spellblades channel magic through their weapons, blending physical and elemental damage.",
+            "role": "hybrid",
+            "resource": "mp",
+            "resource_name": "Arcana",
+            "base_stats":  { "hp": 100, "mp":  85, "str": 13, "dex": 11, "int": 13, "vit": 12, "spd": 10, "luck":  7 },
+            "stat_growth": { "hp": 14.0, "mp": 10.0, "str": 1.8, "dex": 0.9, "int": 1.8, "vit": 1.3, "spd": 0.7, "luck": 0.4 },
+            "weapon_types": ["sword", "staff"],
+            "armor_types":  ["medium"],
+            "equipment_slots": ["weapon", "armor", "accessory", "charm"],
+            "abilities": ["enchanted_blade", "spellstrike", "arcane_armor", "runic_burst"],
+            "starting_weapon": "iron_sword"
+        }
+
+    ]
+}

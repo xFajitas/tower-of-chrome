@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- netstandard2.1, not net8.0: guarantees binary compatibility with Unity's
+         Mono/IL2CPP runtimes once this library is referenced from a Unity project. -->
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- LangVersion is independent of TargetFramework: this unlocks modern C# syntax
+         (file-scoped namespaces, records, etc.) while still compiling against the
+         netstandard2.1 API surface for Unity Mono/IL2CPP compatibility. -->
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- netstandard2.1 doesn't ship System.Text.Json or System.Collections.Immutable in the
+         reference assemblies; these NuGet packages supply them and are safe to reference
+         from Unity later too. -->
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+    <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>

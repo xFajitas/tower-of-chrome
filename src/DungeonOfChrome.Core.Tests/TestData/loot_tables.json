@@ -1,0 +1,36 @@
+{
+    "_description": "Loot tables referenced by enemy definitions. drop_chance = probability any item drops at all.",
+
+    "common_floor1": {
+        "drop_chance": 0.60,
+        "rolls": 1,
+        "item_rarities":    ["COMMON", "UNCOMMON"],
+        "rarity_weights":   [80, 20],
+        "categories":       ["potion", "weapon", "armor", "charm", "accessory"],
+        "category_weights": [45,       20,        20,      10,       5]
+    },
+    "elite_floor1": {
+        "drop_chance": 0.80,
+        "rolls": 1,
+        "item_rarities":    ["UNCOMMON", "RARE"],
+        "rarity_weights":   [65, 35],
+        "categories":       ["potion", "weapon", "armor", "charm", "accessory"],
+        "category_weights": [30,       25,        25,      10,       10]
+    },
+    "mini_boss": {
+        "drop_chance": 1.0,
+        "rolls": 2,
+        "item_rarities":    ["RARE", "EPIC"],
+        "rarity_weights":   [70, 30],
+        "categories":       ["weapon", "armor", "charm", "accessory"],
+        "category_weights": [30,       30,       20,       20]
+    },
+    "boss": {
+        "drop_chance": 1.0,
+        "rolls": 3,
+        "item_rarities":    ["EPIC", "LEGENDARY"],
+        "rarity_weights":   [70, 30],
+        "categories":       ["weapon", "armor", "charm", "accessory"],
+        "category_weights": [30,       30,       20,       20]
+    }
+}

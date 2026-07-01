@@ -1,0 +1,288 @@
+{
+    "_description": "All equippable items and consumables. Loaded once by ItemRegistry.",
+    "items": [
+
+        {"id":"iron_sword",       "name":"Iron Sword",         "description":"A well-worn blade carried by countless soldiers.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"COMMON",    "weapon_type":"sword",      "armor_type":null,
+         "stat_bonuses":{"str":4,"dex":1},                       "consumable":false,"effect":null,"value":50},
+
+        {"id":"steel_sword",      "name":"Steel Sword",        "description":"A sharper, better-balanced blade.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"UNCOMMON",  "weapon_type":"sword",      "armor_type":null,
+         "stat_bonuses":{"str":7,"dex":2},                       "consumable":false,"effect":null,"value":150},
+
+        {"id":"silver_blade",     "name":"Silver Blade",       "description":"A blade of polished silver that harms the supernatural.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"RARE",      "weapon_type":"sword",      "armor_type":null,
+         "stat_bonuses":{"str":11,"dex":3,"luck":2},              "consumable":false,"effect":null,"value":380},
+
+        {"id":"enchanted_sword",  "name":"Enchanted Sword",    "description":"Arcane runes glow along its edge.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"EPIC",      "weapon_type":"sword",      "armor_type":null,
+         "stat_bonuses":{"str":16,"dex":4,"int":2},               "consumable":false,"effect":null,"value":900},
+
+        {"id":"neon_reaper",      "name":"Neon Reaper",        "description":"A cyberpunk blade humming with crackling electricity.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"LEGENDARY", "weapon_type":"sword",      "armor_type":null,
+         "stat_bonuses":{"str":22,"dex":6,"spd":3},               "consumable":false,"effect":null,"value":3500},
+
+        {"id":"iron_axe",         "name":"Iron Axe",           "description":"A crude but effective single-bladed axe.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"COMMON",    "weapon_type":"axe",        "armor_type":null,
+         "stat_bonuses":{"str":5},                                "consumable":false,"effect":null,"value":45},
+
+        {"id":"steel_axe",        "name":"Steel Axe",          "description":"A hefty axe with a reinforced haft.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"UNCOMMON",  "weapon_type":"axe",        "armor_type":null,
+         "stat_bonuses":{"str":9,"vit":1},                        "consumable":false,"effect":null,"value":140},
+
+        {"id":"war_axe",          "name":"War Axe",            "description":"Brutal double-headed axe favored by veterans.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"RARE",      "weapon_type":"axe",        "armor_type":null,
+         "stat_bonuses":{"str":14,"vit":2},                       "consumable":false,"effect":null,"value":360},
+
+        {"id":"iron_greatsword",  "name":"Iron Greatsword",    "description":"A massive two-handed blade requiring both hands.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"COMMON",    "weapon_type":"greatsword", "armor_type":null,
+         "stat_bonuses":{"str":6},                                "consumable":false,"effect":null,"value":55},
+
+        {"id":"bloodied_claymore","name":"Bloodied Claymore",  "description":"Stained with the blood of many foes.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"UNCOMMON",  "weapon_type":"greatsword", "armor_type":null,
+         "stat_bonuses":{"str":11,"dex":1},                       "consumable":false,"effect":null,"value":160},
+
+        {"id":"fury_blade",       "name":"Fury Blade",         "description":"A cleaver imbued with berserker rage.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"RARE",      "weapon_type":"greatsword", "armor_type":null,
+         "stat_bonuses":{"str":17,"dex":2},                       "consumable":false,"effect":null,"value":400},
+
+        {"id":"iron_mace",        "name":"Iron Mace",          "description":"A flanged mace effective against armoured foes.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"COMMON",    "weapon_type":"mace",       "armor_type":null,
+         "stat_bonuses":{"str":4,"vit":2},                        "consumable":false,"effect":null,"value":45},
+
+        {"id":"blessed_mace",     "name":"Blessed Mace",       "description":"A mace consecrated by a temple priest.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"UNCOMMON",  "weapon_type":"mace",       "armor_type":null,
+         "stat_bonuses":{"str":6,"int":3,"vit":2},                "consumable":false,"effect":null,"value":155},
+
+        {"id":"sacred_hammer",    "name":"Sacred Hammer",      "description":"A warhammer that blazes with holy light.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"RARE",      "weapon_type":"mace",       "armor_type":null,
+         "stat_bonuses":{"str":9,"int":6,"vit":3},                "consumable":false,"effect":null,"value":390},
+
+        {"id":"short_bow",        "name":"Short Bow",          "description":"A compact bow for quick shots.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"COMMON",    "weapon_type":"bow",        "armor_type":null,
+         "stat_bonuses":{"str":3,"dex":3},                        "consumable":false,"effect":null,"value":40},
+
+        {"id":"long_bow",         "name":"Long Bow",           "description":"Greater range and stopping power.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"UNCOMMON",  "weapon_type":"bow",        "armor_type":null,
+         "stat_bonuses":{"str":5,"dex":5},                        "consumable":false,"effect":null,"value":135},
+
+        {"id":"elven_bow",        "name":"Elven Bow",          "description":"Carved from ancient heartwood; whisper-quiet.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"RARE",      "weapon_type":"bow",        "armor_type":null,
+         "stat_bonuses":{"str":7,"dex":8,"luck":3},               "consumable":false,"effect":null,"value":370},
+
+        {"id":"iron_dagger",      "name":"Iron Dagger",        "description":"A quick blade suited for stealth and precision.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"COMMON",    "weapon_type":"dagger",     "armor_type":null,
+         "stat_bonuses":{"str":3,"dex":4},                        "consumable":false,"effect":null,"value":35},
+
+        {"id":"shadow_dagger",    "name":"Shadow Dagger",      "description":"Coated in a darkening resin to conceal glints.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"UNCOMMON",  "weapon_type":"dagger",     "armor_type":null,
+         "stat_bonuses":{"str":4,"dex":7,"luck":2},               "consumable":false,"effect":null,"value":130},
+
+        {"id":"assassin_blade",   "name":"Assassin's Blade",   "description":"A perfectly balanced blade made for killing.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"RARE",      "weapon_type":"dagger",     "armor_type":null,
+         "stat_bonuses":{"str":6,"dex":11,"luck":4},              "consumable":false,"effect":null,"value":370},
+
+        {"id":"oak_staff",        "name":"Oak Staff",          "description":"A simple traveller's staff etched with minor runes.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"COMMON",    "weapon_type":"staff",      "armor_type":null,
+         "stat_bonuses":{"int":3,"spd":1},                        "consumable":false,"effect":null,"value":40},
+
+        {"id":"bone_staff",       "name":"Bone Staff",         "description":"Carved from the spine of a slain monster.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"COMMON",    "weapon_type":"staff",      "armor_type":null,
+         "stat_bonuses":{"int":3,"luck":2},                       "consumable":false,"effect":null,"value":42},
+
+        {"id":"runic_staff",      "name":"Runic Staff",        "description":"Ancient runes carved into hardened ironwood.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"UNCOMMON",  "weapon_type":"staff",      "armor_type":null,
+         "stat_bonuses":{"int":6,"spd":2},                        "consumable":false,"effect":null,"value":145},
+
+        {"id":"arcane_staff",     "name":"Arcane Staff",       "description":"Hums with raw magical potential.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"RARE",      "weapon_type":"staff",      "armor_type":null,
+         "stat_bonuses":{"int":10,"spd":3},                       "consumable":false,"effect":null,"value":380},
+
+        {"id":"void_staff",       "name":"Void Staff",         "description":"A conduit for extradimensional energies.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"EPIC",      "weapon_type":"staff",      "armor_type":null,
+         "stat_bonuses":{"int":15,"spd":4,"luck":2},              "consumable":false,"effect":null,"value":950},
+
+        {"id":"apprentice_wand",  "name":"Apprentice Wand",    "description":"The first wand given to fledgling mages.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"COMMON",    "weapon_type":"wand",       "armor_type":null,
+         "stat_bonuses":{"int":4},                                "consumable":false,"effect":null,"value":38},
+
+        {"id":"crystal_wand",     "name":"Crystal Wand",       "description":"Tipped with a focusing prism of pure crystal.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"UNCOMMON",  "weapon_type":"wand",       "armor_type":null,
+         "stat_bonuses":{"int":7,"mp":10},                        "consumable":false,"effect":null,"value":148},
+
+        {"id":"dark_tome",        "name":"Dark Tome",          "description":"A grimoire bound in shadow-stitched leather.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"COMMON",    "weapon_type":"grimoire",   "armor_type":null,
+         "stat_bonuses":{"int":4,"luck":2},                       "consumable":false,"effect":null,"value":44},
+
+        {"id":"soul_grimoire",    "name":"Soul Grimoire",      "description":"Pages written in the essence of captured spirits.",
+         "category":"weapon",  "slot":"weapon",    "rarity":"UNCOMMON",  "weapon_type":"grimoire",   "armor_type":null,
+         "stat_bonuses":{"int":8,"luck":4},                       "consumable":false,"effect":null,"value":160},
+
+        {"id":"iron_plate",       "name":"Iron Plate",         "description":"Full-body plate armour, dented but sturdy.",
+         "category":"armor",   "slot":"armor",     "rarity":"COMMON",    "weapon_type":null,         "armor_type":"heavy",
+         "stat_bonuses":{"vit":6,"str":2},                        "consumable":false,"effect":null,"value":60},
+
+        {"id":"steel_plate",      "name":"Steel Plate",        "description":"Tempered steel plates offering superior protection.",
+         "category":"armor",   "slot":"armor",     "rarity":"UNCOMMON",  "weapon_type":null,         "armor_type":"heavy",
+         "stat_bonuses":{"vit":10,"str":3},                       "consumable":false,"effect":null,"value":180},
+
+        {"id":"dragon_mail",      "name":"Dragon Mail",        "description":"Scales stripped from a slain dragon.",
+         "category":"armor",   "slot":"armor",     "rarity":"RARE",      "weapon_type":null,         "armor_type":"heavy",
+         "stat_bonuses":{"vit":16,"str":5,"luck":2},              "consumable":false,"effect":null,"value":450},
+
+        {"id":"celestial_armor",  "name":"Celestial Armor",    "description":"Forged in a divine forge; warm to the touch.",
+         "category":"armor",   "slot":"armor",     "rarity":"EPIC",      "weapon_type":null,         "armor_type":"heavy",
+         "stat_bonuses":{"vit":22,"str":6,"int":4},               "consumable":false,"effect":null,"value":1100},
+
+        {"id":"leather_armor",    "name":"Leather Armor",      "description":"Tanned hide fitted to allow quick movement.",
+         "category":"armor",   "slot":"armor",     "rarity":"COMMON",    "weapon_type":null,         "armor_type":"medium",
+         "stat_bonuses":{"vit":4,"dex":1},                        "consumable":false,"effect":null,"value":45},
+
+        {"id":"chain_shirt",      "name":"Chain Shirt",        "description":"Interlocked rings offer balanced protection.",
+         "category":"armor",   "slot":"armor",     "rarity":"UNCOMMON",  "weapon_type":null,         "armor_type":"medium",
+         "stat_bonuses":{"vit":7,"dex":2},                        "consumable":false,"effect":null,"value":140},
+
+        {"id":"mithril_vest",     "name":"Mithril Vest",       "description":"Lightweight mithril links — strong as steel.",
+         "category":"armor",   "slot":"armor",     "rarity":"RARE",      "weapon_type":null,         "armor_type":"medium",
+         "stat_bonuses":{"vit":12,"dex":3,"spd":2},               "consumable":false,"effect":null,"value":420},
+
+        {"id":"cloth_robe",       "name":"Cloth Robe",         "description":"Plain robes that do not hinder spellcasting.",
+         "category":"armor",   "slot":"armor",     "rarity":"COMMON",    "weapon_type":null,         "armor_type":"light",
+         "stat_bonuses":{"vit":2,"int":3},                        "consumable":false,"effect":null,"value":30},
+
+        {"id":"silk_robe",        "name":"Silk Robe",          "description":"Fine silk woven with minor protective enchantments.",
+         "category":"armor",   "slot":"armor",     "rarity":"UNCOMMON",  "weapon_type":null,         "armor_type":"light",
+         "stat_bonuses":{"vit":4,"int":5},                        "consumable":false,"effect":null,"value":120},
+
+        {"id":"arcane_vestments", "name":"Arcane Vestments",   "description":"Robes stitched with sigils of power.",
+         "category":"armor",   "slot":"armor",     "rarity":"RARE",      "weapon_type":null,         "armor_type":"light",
+         "stat_bonuses":{"vit":7,"int":8},                        "consumable":false,"effect":null,"value":360},
+
+        {"id":"shadow_garb",      "name":"Shadow Garb",        "description":"Almost invisible in dim light.",
+         "category":"armor",   "slot":"armor",     "rarity":"EPIC",      "weapon_type":null,         "armor_type":"light",
+         "stat_bonuses":{"vit":5,"dex":7,"spd":6},                "consumable":false,"effect":null,"value":950},
+
+        {"id":"luck_charm",       "name":"Luck Charm",         "description":"A rabbit's foot. Probably just superstition.",
+         "category":"charm",   "slot":"charm",     "rarity":"COMMON",    "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"luck":3},                               "consumable":false,"effect":null,"value":25},
+
+        {"id":"strength_charm",   "name":"Strength Charm",     "description":"A polished stone carved with a fist.",
+         "category":"charm",   "slot":"charm",     "rarity":"COMMON",    "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"str":3},                                "consumable":false,"effect":null,"value":25},
+
+        {"id":"vitality_charm",   "name":"Vitality Charm",     "description":"A dried root said to fortify the body.",
+         "category":"charm",   "slot":"charm",     "rarity":"COMMON",    "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"vit":3},                                "consumable":false,"effect":null,"value":25},
+
+        {"id":"speed_talisman",   "name":"Speed Talisman",     "description":"A feather bound in silver wire.",
+         "category":"charm",   "slot":"charm",     "rarity":"UNCOMMON",  "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"spd":5},                                "consumable":false,"effect":null,"value":85},
+
+        {"id":"defender_charm",   "name":"Defender's Charm",   "description":"A shield-shaped amulet forged from old armour.",
+         "category":"charm",   "slot":"charm",     "rarity":"UNCOMMON",  "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"vit":5,"str":2},                        "consumable":false,"effect":null,"value":90},
+
+        {"id":"sorcerer_charm",   "name":"Sorcerer's Charm",   "description":"A tiny crystal sphere that amplifies focus.",
+         "category":"charm",   "slot":"charm",     "rarity":"UNCOMMON",  "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"int":6},                                "consumable":false,"effect":null,"value":95},
+
+        {"id":"dragon_charm",     "name":"Dragon's Heart",     "description":"A scale from a fire drake worn close to the skin.",
+         "category":"charm",   "slot":"charm",     "rarity":"RARE",      "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"str":8,"vit":4},                        "consumable":false,"effect":null,"value":310},
+
+        {"id":"crystal_focus",    "name":"Crystal Focus",      "description":"A lens of purified mana crystal.",
+         "category":"charm",   "slot":"charm",     "rarity":"RARE",      "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"int":8,"luck":3},                       "consumable":false,"effect":null,"value":320},
+
+        {"id":"warrior_heart",    "name":"Warrior's Heart",    "description":"A calcified heart from a legendary champion.",
+         "category":"charm",   "slot":"charm",     "rarity":"EPIC",      "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"str":12,"vit":8},                       "consumable":false,"effect":null,"value":850},
+
+        {"id":"void_heart",       "name":"Void Heart",         "description":"A crystallised fragment of pure void energy.",
+         "category":"charm",   "slot":"charm",     "rarity":"EPIC",      "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"int":12,"spd":5},                       "consumable":false,"effect":null,"value":870},
+
+        {"id":"philosopher_stone","name":"Philosopher's Stone", "description":"Said to be the key to all magic — and to all life.",
+         "category":"charm",   "slot":"charm",     "rarity":"LEGENDARY", "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"str":8,"dex":8,"int":8,"vit":8,"spd":4,"luck":8},
+         "consumable":false,"effect":null,"value":4500},
+
+        {"id":"copper_ring",      "name":"Copper Ring",        "description":"A simple band said to bring good fortune.",
+         "category":"accessory","slot":"accessory", "rarity":"COMMON",    "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"luck":2},                               "consumable":false,"effect":null,"value":20},
+
+        {"id":"leather_bracelet", "name":"Leather Bracelet",   "description":"A braided leather bracelet worn by warriors.",
+         "category":"accessory","slot":"accessory", "rarity":"COMMON",    "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"str":2},                                "consumable":false,"effect":null,"value":20},
+
+        {"id":"swift_ring",       "name":"Swift Ring",         "description":"A thin silver band that quickens the wearer.",
+         "category":"accessory","slot":"accessory", "rarity":"COMMON",    "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"spd":2},                                "consumable":false,"effect":null,"value":22},
+
+        {"id":"silver_ring",      "name":"Silver Ring",        "description":"A polished ring engraved with lucky symbols.",
+         "category":"accessory","slot":"accessory", "rarity":"UNCOMMON",  "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"luck":4,"dex":2},                       "consumable":false,"effect":null,"value":80},
+
+        {"id":"power_band",       "name":"Power Band",         "description":"A heavy iron band that concentrates strength.",
+         "category":"accessory","slot":"accessory", "rarity":"UNCOMMON",  "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"str":5},                                "consumable":false,"effect":null,"value":75},
+
+        {"id":"speed_band",       "name":"Speed Band",         "description":"Fitted with tiny runes of haste.",
+         "category":"accessory","slot":"accessory", "rarity":"UNCOMMON",  "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"spd":5},                                "consumable":false,"effect":null,"value":80},
+
+        {"id":"shadow_ring",      "name":"Shadow Ring",        "description":"Absorbs ambient light; grants preternatural reflexes.",
+         "category":"accessory","slot":"accessory", "rarity":"RARE",      "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"dex":6,"luck":6},                       "consumable":false,"effect":null,"value":300},
+
+        {"id":"battle_gauntlet",  "name":"Battle Gauntlet",    "description":"An iron-studded gauntlet worn over the off-hand.",
+         "category":"accessory","slot":"accessory", "rarity":"RARE",      "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"str":8,"vit":3},                        "consumable":false,"effect":null,"value":310},
+
+        {"id":"arcane_pendant",   "name":"Arcane Pendant",     "description":"A sapphire pendant that focuses arcane energy.",
+         "category":"accessory","slot":"accessory", "rarity":"RARE",      "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"int":8},                                "consumable":false,"effect":null,"value":290},
+
+        {"id":"void_pendant",     "name":"Void Pendant",       "description":"A pitch-black gem that hungers for magic.",
+         "category":"accessory","slot":"accessory", "rarity":"EPIC",      "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"int":10,"luck":6},                      "consumable":false,"effect":null,"value":820},
+
+        {"id":"infinity_band",    "name":"Infinity Band",      "description":"A band that loops forever — its owner seems to as well.",
+         "category":"accessory","slot":"accessory", "rarity":"LEGENDARY", "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{"str":6,"dex":6,"int":6,"vit":6,"spd":6,"luck":6},
+         "consumable":false,"effect":null,"value":4000},
+
+        {"id":"health_potion_small","name":"Small Health Potion","description":"A crude flask that restores a little vitality.",
+         "category":"potion",  "slot":null,         "rarity":"COMMON",    "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{},    "consumable":true, "effect":{"type":"heal_hp","value":50},   "value":30},
+
+        {"id":"health_potion",    "name":"Health Potion",      "description":"A well-made restorative draught.",
+         "category":"potion",  "slot":null,         "rarity":"UNCOMMON",  "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{},    "consumable":true, "effect":{"type":"heal_hp","value":120},  "value":80},
+
+        {"id":"health_potion_large","name":"Large Health Potion","description":"A potent brew that heals grievous wounds.",
+         "category":"potion",  "slot":null,         "rarity":"RARE",      "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{},    "consumable":true, "effect":{"type":"heal_hp","value":250},  "value":200},
+
+        {"id":"mana_potion_small","name":"Small Mana Potion",   "description":"Distilled essence that replenishes a trickle of mana.",
+         "category":"potion",  "slot":null,         "rarity":"COMMON",    "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{},    "consumable":true, "effect":{"type":"restore_mp","value":30},"value":28},
+
+        {"id":"mana_potion",      "name":"Mana Potion",        "description":"A blue flask that restores significant mana.",
+         "category":"potion",  "slot":null,         "rarity":"UNCOMMON",  "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{},    "consumable":true, "effect":{"type":"restore_mp","value":80},"value":75},
+
+        {"id":"antidote",         "name":"Antidote",           "description":"Neutralises poisons and burns in moments.",
+         "category":"potion",  "slot":null,         "rarity":"COMMON",    "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{},    "consumable":true, "effect":{"type":"cleanse"},              "value":25},
+
+        {"id":"elixir_of_power",  "name":"Elixir of Power",    "description":"A shimmering gold liquid that blesses the drinker.",
+         "category":"potion",  "slot":null,         "rarity":"RARE",      "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{},    "consumable":true, "effect":{"type":"buff","status":"blessed"},"value":180},
+
+        {"id":"full_restore",     "name":"Full Restore",       "description":"A legendary potion that fully heals body and mind.",
+         "category":"potion",  "slot":null,         "rarity":"EPIC",      "weapon_type":null,         "armor_type":null,
+         "stat_bonuses":{},    "consumable":true, "effect":{"type":"full_restore"},         "value":700}
+
+    ]
+}

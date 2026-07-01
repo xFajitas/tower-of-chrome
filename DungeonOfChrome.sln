@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FE6C6F47-EC04-4B4D-8ED0-A7F9DADE4DCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonOfChrome.Core", "src\DungeonOfChrome.Core\DungeonOfChrome.Core.csproj", "{B1E4D414-714B-4394-9860-00F4237DF61D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonOfChrome.Core.Tests", "src\DungeonOfChrome.Core.Tests\DungeonOfChrome.Core.Tests.csproj", "{4B844DFB-3927-4C26-BF59-280DE6F2023C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1E4D414-714B-4394-9860-00F4237DF61D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1E4D414-714B-4394-9860-00F4237DF61D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1E4D414-714B-4394-9860-00F4237DF61D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1E4D414-714B-4394-9860-00F4237DF61D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B844DFB-3927-4C26-BF59-280DE6F2023C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B844DFB-3927-4C26-BF59-280DE6F2023C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B844DFB-3927-4C26-BF59-280DE6F2023C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B844DFB-3927-4C26-BF59-280DE6F2023C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B1E4D414-714B-4394-9860-00F4237DF61D} = {FE6C6F47-EC04-4B4D-8ED0-A7F9DADE4DCC}
+		{4B844DFB-3927-4C26-BF59-280DE6F2023C} = {FE6C6F47-EC04-4B4D-8ED0-A7F9DADE4DCC}
+	EndGlobalSection
+EndGlobal
