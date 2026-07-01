@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using NUnit.Framework;
 using TowerOfChrome.Core.Fsm;
 using TowerOfChrome.Unity;
@@ -109,5 +110,29 @@ public class GameManagerBootTest
         Assert.IsNotNull(gm.Battle);
         Assert.AreEqual(TowerOfChrome.Core.Combat.BattlePhase.Ongoing, gm.Battle!.Phase);
         Assert.IsTrue(gm.Battle.GetEnemyList().Count > 0);
+    }
+
+    /// <summary>Confirms SaveGame() (only called from AdvanceFloor) actually writes a real file
+    /// at Application.persistentDataPath -- not just that SaveLoadService's in-memory logic
+    /// round-trips (already covered in Core.Tests), but that the Unity-side path plumbing does
+    /// too. Mutates CurrentFloor before LoadGame() so a passing assertion proves the reload came
+    /// from disk, not leftover in-memory state.</summary>
+    [UnityTest]
+    public IEnumerator AdvanceFloor_WritesRealSaveFile_AndLoadGame_RestoresFromDisk()
+    {
+        GameManager gm = null;
+        yield return LoadGameManager(loaded => gm = loaded);
+
+        var floorBefore = gm.CurrentFloor;
+        gm.AdvanceFloor();
+
+        var savePath = Path.Combine(Application.persistentDataPath, "save", "savegame.json");
+        Assert.IsTrue(File.Exists(savePath), $"Expected a save file at {savePath}");
+
+        gm.CurrentFloor = 999;
+        var loaded = gm.LoadGame();
+
+        Assert.IsTrue(loaded);
+        Assert.AreEqual(floorBefore + 1, gm.CurrentFloor);
     }
 }
