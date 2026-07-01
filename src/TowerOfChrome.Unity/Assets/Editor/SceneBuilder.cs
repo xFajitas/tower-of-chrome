@@ -6,6 +6,7 @@ using TowerOfChrome.Unity.Screens;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 /// <summary>
@@ -28,6 +29,15 @@ public static class SceneBuilder
     public static void BuildMainScene()
     {
         var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+
+        // UI Toolkit's runtime panels (UIDocument) do not receive pointer/click events without an
+        // EventSystem in the scene to route them (confirmed against Unity's own runtime-input FAQ)
+        // -- keyboard input via Input.GetKeyDown polling works regardless, since that's independent
+        // engine-level polling, which is why mouse clicks silently did nothing everywhere while
+        // keyboard nav worked fine in earlier manual testing.
+        var eventSystemGo = new GameObject("EventSystem");
+        eventSystemGo.AddComponent<EventSystem>();
+        eventSystemGo.AddComponent<StandaloneInputModule>();
 
         var gmGo = new GameObject("GameManager");
         var gm = gmGo.AddComponent<GameManager>();
