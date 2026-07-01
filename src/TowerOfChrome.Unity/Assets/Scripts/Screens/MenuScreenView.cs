@@ -100,11 +100,13 @@ namespace TowerOfChrome.Unity.Screens
                 if (i == _selected)
                     label.AddToClassList("menu-item--selected");
 
-                label.RegisterCallback<MouseEnterEvent>(_ =>
-                {
-                    _selected = index;
-                    Render();
-                });
+                // Hover just toggles a class on the *existing* elements -- it must not call
+                // Render() (which destroys and recreates every Label). StandaloneInputModule
+                // re-picks whatever is under the pointer every frame, so replacing the element a
+                // stationary cursor is hovering makes it look "new" again, re-firing
+                // MouseEnterEvent -> Render() -> replace -> re-fire, forever, as long as the
+                // mouse sits still over an item (this is what made items flicker/vanish).
+                label.RegisterCallback<MouseEnterEvent>(_ => SetSelected(index));
                 label.RegisterCallback<ClickEvent>(_ =>
                 {
                     _selected = index;
@@ -113,6 +115,13 @@ namespace TowerOfChrome.Unity.Screens
 
                 _itemsContainer.Add(label);
             }
+        }
+
+        private void SetSelected(int index)
+        {
+            _selected = index;
+            for (var i = 0; i < _itemsContainer.childCount; i++)
+                _itemsContainer[i].EnableInClassList("menu-item--selected", i == _selected);
         }
 
         private void Update()
