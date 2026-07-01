@@ -5,7 +5,7 @@
 ; Output lands in installer\Output\TowerOfChrome-Setup-<version>.exe
 
 #define MyAppName "Tower of Chrome"
-#define MyAppVersion "1.03.0"
+#define MyAppVersion "1.04.0"
 #define MyAppPublisher "Fajitas"
 #define MyAppExeName "TowerOfChrome.exe"
 #define BuildDir "..\src\TowerOfChrome.Unity\Builds\Windows"
