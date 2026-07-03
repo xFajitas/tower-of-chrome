@@ -50,9 +50,18 @@ Windows' 1920x1080 default it trades a previously-slightly-cropped effective hei
 designed 800 reference units) for a bit of extra horizontal space (1422 of 1200 reference units) —
 strictly safer for text legibility either way.
 
-If a future device still shows overlap, the next lever is `m_ReferenceResolution` itself (currently
-1200x800, a 3:2 aspect no longer close to most phones at ~20:9) — but `m_Match: 1` alone resolved
-the reported case without touching any UXML/USS layout.
+Follow-up: the reported device (Note20) still showed the identical overlap after this fix was
+built and reinstalled, most likely because `AndroidBundleVersionCode` was never bumped between
+builds (still `1`) — some OEM installers (Samsung's included) can silently skip reinstalling an
+APK over itself when the version code hasn't changed, so the fix plausibly never actually landed
+on the device. Bumped `AndroidBundleVersionCode` to `2` so this build is unambiguously a new
+version. Also unified `m_ReferenceResolution` from 1200x800 to 1920x1080 to match both platforms'
+actual default output resolution (`defaultScreenWidth`/`defaultScreenHeight` and
+`androidDefaultWindowWidth`/`androidDefaultWindowHeight` were already 1920x1080) — with
+`m_Match: 1` this means Windows now renders UI at its literal authored USS pixel sizes (no
+scale-up), a visible size decrease from the previous 1.6x zoom the 1200-wide reference caused
+there; every other resolution/aspect ratio, including phones, now scales down from that same
+1:1 baseline instead of up from a narrower one.
 
 ## IL2CPP + System.Text.Json AOT risk
 
