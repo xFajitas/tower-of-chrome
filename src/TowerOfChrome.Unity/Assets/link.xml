@@ -1,0 +1,12 @@
+<!--
+IL2CPP AOT stripping can remove metadata that System.Text.Json's reflection-based
+JsonSerializer.Deserialize<T> needs at runtime, since none of the calls in
+UnityStreamingAssetsDataSource use source-generated (de)serialization. This has never been
+exercised under IL2CPP before (Windows Standalone uses Mono), so preserve TowerOfChrome.Core
+wholesale rather than risk a silent MissingMethodException on an Android device. If this proves
+insufficient, the fallback is a source-generated JsonSerializerContext (see
+docs/android-porting-notes.md).
+-->
+<linker>
+  <assembly fullname="TowerOfChrome.Core" preserve="all" />
+</linker>

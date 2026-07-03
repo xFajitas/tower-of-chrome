@@ -4,6 +4,7 @@ using System.Text.Json;
 using TowerOfChrome.Core.Data;
 using TowerOfChrome.Core.Data.DataModels;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace TowerOfChrome.Unity.Data
 {
@@ -13,10 +14,13 @@ namespace TowerOfChrome.Unity.Data
     /// combat formulas, dungeon generation) consumes the plain IGameDataSource interface and
     /// has no idea Unity exists.
     ///
-    /// Note: Application.streamingAssetsPath is a plain filesystem path on Windows Standalone
-    /// and in the Editor, so System.IO.File works directly here. On Android/WebGL, streaming
-    /// assets live inside a compressed archive and require UnityWebRequest instead — not
-    /// needed for this Windows-only project, but worth knowing if a platform target changes.
+    /// Application.streamingAssetsPath is a plain filesystem path on Windows Standalone and in
+    /// the Editor, so System.IO.File works directly there. On Android, StreamingAssets live
+    /// inside the compressed APK and aren't filesystem-accessible, so ReadText goes through
+    /// UnityWebRequest instead, blocking on isDone. GameManager.Awake() constructs the Core
+    /// registries synchronously, so this stays synchronous rather than becoming a coroutine —
+    /// safe here because a local jar:/APK-asset read completes off a native callback, not a
+    /// frame tick, so spin-waiting the main thread doesn't stall waiting on itself.
     /// </summary>
     public sealed class UnityStreamingAssetsDataSource : IGameDataSource
     {
@@ -24,7 +28,22 @@ namespace TowerOfChrome.Unity.Data
 
         private static string DataDir => Path.Combine(Application.streamingAssetsPath, "data");
 
+#if UNITY_ANDROID && !UNITY_EDITOR
+        private static string ReadText(string fileName)
+        {
+            var path = Path.Combine(DataDir, fileName);
+            using var request = UnityWebRequest.Get(path);
+            var op = request.SendWebRequest();
+            while (!op.isDone) { }
+
+            if (request.result != UnityWebRequest.Result.Success)
+                throw new IOException($"Failed to load '{fileName}' from StreamingAssets: {request.error}");
+
+            return request.downloadHandler.text;
+        }
+#else
         private static string ReadText(string fileName) => File.ReadAllText(Path.Combine(DataDir, fileName));
+#endif
 
         private static T LoadFile<T>(string fileName) where T : new()
         {

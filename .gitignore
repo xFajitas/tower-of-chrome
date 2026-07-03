@@ -12,6 +12,7 @@ obj/
 [Ll]ogs/
 [Mm]emoryCaptures/
 [Uu]serSettings/
+.utmp/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
