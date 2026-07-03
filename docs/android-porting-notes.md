@@ -34,6 +34,26 @@ a narrow portrait aspect ratio was out of scope for this pass. `defaultScreenOri
 UI stays upright whichever way the player holds the device rather than force-locking to one
 specific landscape direction.
 
+## UI scaling on wide phone aspect ratios
+
+Confirmed broken on a real device (Galaxy Note20, 2400x1080 landscape, ~20:9) and fixed:
+`DefaultPanelSettings.asset` had `m_ScreenMatchMode: 0` (MatchWidthOrHeight) with `m_Match: 0`,
+meaning the panel scaled purely by matching screen **width** against the 1200-wide reference
+resolution. On a screen this much wider than the reference's 3:2 aspect, that inflates the scale
+factor enough that the *effective vertical space* shrinks well below the 800 reference units the
+layouts assume — rows and text overlapped everywhere (title cropped off the sides, party HUD text
+stacked on itself, class-select rows overlapping). Changed `m_Match` to `1` (match by height
+instead): scale is now `screenHeight / 800`, so the full vertical layout always fits regardless of
+device width — wider screens than 3:2 just get extra horizontal breathing room (effectively
+pillarboxed) instead of vertical overlap. This is a shared asset used by both platforms; on
+Windows' 1920x1080 default it trades a previously-slightly-cropped effective height (675 of the
+designed 800 reference units) for a bit of extra horizontal space (1422 of 1200 reference units) —
+strictly safer for text legibility either way.
+
+If a future device still shows overlap, the next lever is `m_ReferenceResolution` itself (currently
+1200x800, a 3:2 aspect no longer close to most phones at ~20:9) — but `m_Match: 1` alone resolved
+the reported case without touching any UXML/USS layout.
+
 ## IL2CPP + System.Text.Json AOT risk
 
 `AndroidTargetArchitectures` is already ARM64-only (`2`), which requires the IL2CPP scripting
