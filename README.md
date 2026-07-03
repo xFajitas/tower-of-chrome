@@ -1,6 +1,7 @@
 # Tower of Chrome
 
 [![Download](https://img.shields.io/badge/Download-Latest%20Release-2ea44f?style=for-the-badge)](https://github.com/xFajitas/tower-of-chrome/releases/latest)
+[![Download](https://img.shields.io/badge/Download-Android%20(preview)-2ea44f?style=for-the-badge)](https://github.com/xFajitas/tower-of-chrome/releases/tag/android-v1.06)
 
 A turn-based dungeon-crawler RPG. Pick a party of four, descend through a
 procedurally-generated tower fighting your way to the stairs, loot and
@@ -20,6 +21,13 @@ small/indie software, not a sign anything is wrong. To proceed:
 If your browser also flags the download itself (e.g. Edge's "This file
 isn't commonly downloaded"), click the **...** menu next to it and choose
 **Keep**.
+
+## Android (preview)
+
+An [Android build](https://github.com/xFajitas/tower-of-chrome/releases/tag/android-v1.06)
+is available as a sideloadable APK. It's a preview: debug-signed (not from the Play
+Store), landscape-only, and a handful of keyboard-only shortcuts don't have an
+on-screen touch equivalent yet. Requires Android 6.0+ on an ARM64 device.
 
 ## Features
 
